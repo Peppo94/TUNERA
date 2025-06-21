@@ -61,7 +61,39 @@ body {
   margin: 10px 0 5px;
 }
 
-.footer {
+.footer 
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #111;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  margin: 0;
+  justify-content: center;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #e50914;
+}
+
+/* Spazio per la navbar */
+.hero {
+  padding-top: 80px;
+}
   padding: 30px;
   text-align: center;
   background-color: #000;
