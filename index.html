@@ -99,6 +99,127 @@
       padding: 0.6rem;
       font-size: 1rem;
       margin-top: 1rem;
-      borde
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    a {
+      color: #e91e63;
+    }
+    .auth-section {
+      max-width: 400px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .nickname-display {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #ff416c;
+    }
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
 
-  
+  <nav class="navbar">
+    <h1>TUNERA</h1>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#preferences">Genres</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#playlist">Playlist</a></li>
+      <li><a href="#register">Register / Login</a></li>
+    </ul>
+  </nav>
+
+  <header id="home" class="hero">
+    <h1>Welcome to TUNERA</h1>
+    <p>Discover new music tailored to your taste</p>
+    <a href="#preferences" class="btn">Start Exploring</a>
+  </header>
+
+  <section id="preferences" class="section">
+    <h2>🎧 Choose Your Favorite Genre</h2>
+    <select id="genreSelect">
+      <option value="">-- Select a genre --</option>
+      <option value="pop">Pop</option>
+      <option value="rock">Rock</option>
+      <option value="rap">Rap</option>
+      <option value="metal">Metal</option>
+    </select>
+    <button onclick="showSuggestions()">Show Artists</button>
+  </section>
+
+  <section id="artists" class="section">
+    <h2>🎤 Recommended Artists</h2>
+    <div class="grid" id="artistGrid">
+      <!-- Artist cards inserted here -->
+    </div>
+  </section>
+
+  <section id="playlist" class="section">
+    <h2>🔥 Monthly Playlist</h2>
+    <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" 
+            width="100%" height="152" frameborder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </section>
+
+  <section id="register" class="auth-section">
+    <h2>Register</h2>
+    <input type="email" id="regEmail" placeholder="Email" required /><br />
+    <input type="password" id="regPassword" placeholder="Password" required /><br />
+    <input type="text" id="regNickname" placeholder="Choose your nickname" required /><br />
+    <button onclick="registerUser()">Register</button>
+
+    <h2 style="margin-top:2rem;">Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required /><br />
+    <input type="password" id="loginPassword" placeholder="Password" required /><br />
+    <button onclick="loginUser()">Login</button>
+
+    <div id="userInfo" class="nickname-display" style="display:none;">
+      Logged in as: <span id="displayNickname"></span>
+      <button onclick="logoutUser()" style="margin-left:1rem; padding:0.3rem 0.7rem; font-size:0.9rem;">Logout</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Contact us on <a href="#">Instagram</a> — &copy; 2025 TUNERA</p>
+  </footer>
+
+  <script>
+    // Firebase configuration (replace with your own config)
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9jd74SINKKmkHhmvQfTx0nKiL7NTUF8w",
+      authDomain: "tunera-b3efa.firebaseapp.com",
+      projectId: "tunera-b3efa",
+      storageBucket: "tunera-b3efa.appspot.com",
+      messagingSenderId: "4289124219",
+      appId: "1:4289124219:web:507e539fe707e35b814fde",
+      measurementId: "G-0HLQQKY6L5"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Artists data (can be moved to JSON file and fetched via fetch if preferred)
+    const artists = {
+      pop: [
+        {name: "Dua Lipa", image: "https://i.scdn.co/image/ab6761610000e5ebc9e20c8dc67f31183e230eea", link: "https://www.dualipa.com/"},
+        {name: "The Weeknd", image: "https://i.scdn.co/image/ab6761610000e5eb44d4ed3aa5096f13b3e0f4f1", link: "https://www.theweeknd.com/"},
+        {name: "Billie Eilish", image: "https://i.scdn.co/image/ab676
