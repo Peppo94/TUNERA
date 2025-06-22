@@ -319,4 +319,80 @@
     }
 
     /* Responsive */
-    @media (max-width: 
+    @media (max-width: 600px) {
+      header.hero h1 {
+        font-size: 2.2rem;
+      }
+      section {
+        margin: 2rem 1rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <h1>TUNERA</h1>
+  <ul id="nav-links">
+    <li><a href="#home" onclick="showHome()">Home</a></li>
+    <li><a href="#discover" onclick="showDiscover()">Discover</a></li>
+    <li><a href="#register" onclick="showRegister()">Register / Login</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="home">
+  <h1>Discover Your Next Favorite Artist</h1>
+  <p>Personalized music suggestions, curated playlists, and more.</p>
+  <button class="btn" onclick="showDiscover()">Get Started</button>
+</header>
+
+<section id="discover" style="display:none;">
+  <h2>Choose Your Genre</h2>
+  <div id="preferences">
+    <select id="genreSelect" aria-label="Select music genre">
+      <option value="">-- Select Genre --</option>
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="hiphop">Hip-Hop</option>
+      <option value="electronic">Electronic</option>
+      <option value="jazz">Jazz</option>
+      <option value="metal">Metal</option>
+      <option value="country">Country</option>
+      <option value="reggae">Reggae</option>
+    </select>
+    <button onclick="showSuggestions()">Show Artists</button>
+  </div>
+  <div id="artistGrid" aria-live="polite"></div>
+
+  <section id="playlist" style="margin-top:3rem;">
+    <h2>Featured Playlist</h2>
+    <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </section>
+</section>
+
+<section id="register" style="display:none;">
+  <div class="auth-container" aria-live="polite">
+    <h2 id="authTitle">Register</h2>
+    <label for="emailInput">Email:</label>
+    <input type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email" />
+    <label for="passwordInput">Password:</label>
+    <input type="password" id="passwordInput" placeholder="••••••••" required autocomplete="new-password" />
+    <label for="nicknameInput" id="nicknameLabel" style="display:none;">Choose a Nickname:</label>
+    <input type="text" id="nicknameInput" placeholder="Nickname" style="display:none;" autocomplete="nickname" />
+
+    <button id="authBtn" onclick="handleRegister()">Register</button>
+    <button class="link-btn" onclick="toggleAuthMode()">Already have an account? Login</button>
+    <button class="link-btn" onclick="forgotPassword()" style="margin-top:0.5rem;">Forgot Password?</button>
+
+    <p id="authMessage" class="auth-message"></p>
+  </div>
+  <div id="greeting" aria-live="polite" style="display:none;"></div>
+</section>
+
+<footer class="footer">
+  <p>© 2025 TUNERA - Made with ❤️ for your music journey</p>
+  <p>By Your Dev Buddy</p>
+</footer>
+
+<script>
+  // Firebase imp
