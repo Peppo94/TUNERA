@@ -2,226 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TUNERA – Discover New Music</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TUNERA</title>
   <style>
     body {
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0f0f0f;
-      color: #f1f1f1;
-      background-size: cover;
-      transition: background 0.5s ease;
+      padding: 0;
+      background: #0f172a;
+      color: #f8fafc;
     }
-    .navbar {
-      position: sticky;
-      top: 0;
-      background: #111;
-      padding: 1rem 2rem;
+    header {
+      background: #1e293b;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #facc15;
+    }
+    form {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
+      flex-direction: column;
+      gap: 1rem;
+      background: #1e293b;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
     }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
+    input, button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
     }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
+    input {
+      background: #334155;
+      color: #fff;
+    }
+    button {
+      background: #facc15;
+      color: #000;
+      cursor: pointer;
       transition: 0.3s;
     }
-    .nav-links a:hover {
-      color: #e91e63;
+    button:hover {
+      background: #eab308;
     }
-    .hero {
-      background: linear-gradient(to right, #ff4b2b, #ff416c);
-      color: white;
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-    .btn {
-      background: white;
-      color: #ff4b2b;
-      padding: 0.7rem 1.5rem;
-      border: none;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .card {
-      background: #1c1c1c;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: scale(1.05);
-    }
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-    }
-    .card audio {
-      margin-top: 10px;
-      display: none;
-    }
-    .card:hover audio {
-      display: block;
-    }
-    .artist-bio {
-      font-size: 0.85rem;
-      color: #aaa;
-      margin-top: 0.5rem;
-    }
-    .footer {
-      text-align: center;
-      padding: 2rem;
-      background: #222;
-      color: white;
+    #user-info {
       margin-top: 2rem;
-    }
-    input, select, button {
-      padding: 0.6rem;
-      font-size: 1rem;
-      margin-top: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      text-align: center;
     }
     .hidden {
       display: none;
     }
+    a {
+      color: #38bdf8;
+      text-decoration: underline;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <h1>TUNERA</h1>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#preferences">Genres</a></li>
-      <li><a href="#artists">Artists</a></li>
-      <li><a href="#playlist">Playlist</a></li>
-      <li><a href="#register">Register</a></li>
-    </ul>
-  </nav>
 
-  <header id="home" class="hero">
-    <h1>Welcome to TUNERA</h1>
-    <p>Discover new music tailored to your taste</p>
-    <a href="#preferences" class="btn">Start Exploring</a>
-  </header>
+<header>
+  <h1>TUNERA</h1>
+  <div id="welcome-nickname"></div>
+</header>
 
-  <section id="preferences" class="section">
-    <h2>🎧 Choose Your Favorite Genre</h2>
-    <select id="genreSelect">
-      <option value="">-- Select a genre --</option>
-      <option value="pop">Pop</option>
-      <option value="rock">Rock</option>
-      <option value="rap">Rap</option>
-      <option value="metal">Metal</option>
-    </select>
-    <button onclick="showSuggestions()">Show Artists</button>
-  </section>
+<main>
+  <h2>Register</h2>
+  <form id="signup-form">
+    <input type="text" id="signup-nickname" placeholder="Nickname" required />
+    <input type="email" id="signup-email" placeholder="Email" required />
+    <input type="password" id="signup-password" placeholder="Password" required />
+    <button type="submit">Sign Up</button>
+  </form>
 
-  <section id="artists" class="section">
-    <h2>🎤 Recommended Artists</h2>
-    <div class="grid" id="artistGrid"></div>
-  </section>
+  <h2>Login</h2>
+  <form id="login-form">
+    <input type="email" id="login-email" placeholder="Email" required />
+    <input type="password" id="login-password" placeholder="Password" required />
+    <button type="submit">Log In</button>
+  </form>
 
-  <section id="playlist" class="section">
-    <h2>🔥 Monthly Playlist</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-  </section>
+  <p><a id="reset-password">Forgot Password?</a></p>
 
-  <section id="register" class="section">
-    <h2>Register to TUNERA</h2>
-    <input type="email" id="email" placeholder="Email" required /><br>
-    <input type="password" id="password" placeholder="Password" required /><br>
-    <input type="text" id="nickname" placeholder="Choose your nickname" required /><br>
-    <button onclick="registerUser()">Register</button>
-    <p><a href="#" onclick="forgotPassword()">Forgot your password?</a></p>
-    <p>Already registered? <a href="#" onclick="showLogin()">Log in here</a></p>
-    <div id="loginForm" class="hidden">
-      <input type="email" id="loginEmail" placeholder="Email" required /><br>
-      <input type="password" id="loginPassword" placeholder="Password" required /><br>
-      <button onclick="loginUser()">Log In</button>
-    </div>
-    <p id="userDisplay"></p>
-  </section>
+  <div id="user-info" class="hidden">
+    <p>Welcome, <span id="user-nickname"></span>!</p>
+    <button id="logout-button">Log Out</button>
+  </div>
+</main>
 
-  <footer class="footer">
-    <p>&copy; 2025 TUNERA | Contact us on <a href="#">Instagram</a></p>
-  </footer>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  <script type="module" src="firebase-auth.js"></script>
-  <script>
-    async function loadArtists() {
-      const res = await fetch('artists.json');
-      return res.json();
-    }
+  const firebaseConfig = {
+    apiKey: "AIzaSyA9jd74SINKKmkHhmvQfTx0nKiL7NTUF8w",
+    authDomain: "tunera-b3efa.firebaseapp.com",
+    projectId: "tunera-b3efa",
+    storageBucket: "tunera-b3efa.appspot.com",
+    messagingSenderId: "4289124219",
+    appId: "1:4289124219:web:507e539fe707e35b814fde",
+    measurementId: "G-0HLQQKY6L5"
+  };
 
-    const genreBackgrounds = {
-      pop: 'linear-gradient(to right, #ff9a9e, #fad0c4)',
-      rock: 'linear-gradient(to right, #434343, #000000)',
-      rap: 'linear-gradient(to right, #000000, #434343)',
-      metal: 'linear-gradient(to right, #485563, #29323c)'
-    };
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    async function showSuggestions() {
-      const artists = await loadArtists();
-      const genre = document.getElementById("genreSelect").value;
-      const container = document.getElementById("artistGrid");
-      container.innerHTML = "";
-      document.body.style.background = genreBackgrounds[genre] || '#0f0f0f';
+  const signupForm = document.getElementById("signup-form");
+  const loginForm = document.getElementById("login-form");
+  const logoutBtn = document.getElementById("logout-button");
+  const nicknameDisplay = document.getElementById("user-nickname");
+  const welcomeNickname = document.getElementById("welcome-nickname");
+  const userInfo = document.getElementById("user-info");
+  const resetLink = document.getElementById("reset-password");
 
-      if (!genre || !artists[genre] || artists[genre].length === 0) {
-        container.innerHTML = "<p>Please select a valid genre.</p>";
-        return;
-      }
+  if (signupForm) {
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      const nickname = document.getElementById("signup-nickname").value;
 
-      artists[genre].forEach(artist => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <img src="${artist.image}" alt="${artist.name}" />
-          <h3>${artist.name}</h3>
-          <p class="artist-bio">${artist.bio || ''}</p>
-          <a href="${artist.link}" target="_blank">Official Page</a>
-          ${artist.preview ? `<audio controls src="${artist.preview}"></audio>` : ''}
-        `;
-        container.appendChild(card);
-      });
-    }
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCred) => {
+          localStorage.setItem("nickname", nickname);
+          alert("Account created successfully!");
+        })
+        .catch((err) => alert(err.message));
+    });
+  }
 
-    function showLogin() {
-      document.getElementById('loginForm').classList.toggle('hidden');
-    }
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
 
-    function forgotPassword() {
-      const email = prompt("Enter your email to reset your password:");
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Logged in!");
+        })
+        .catch((err) => alert(err.message));
+    });
+  }
+
+  if (resetLink) {
+    resetLink.addEventListener("click", () => {
+      const email = prompt("Enter your email to reset password:");
       if (email) {
-        // Firebase reset logic here
-        alert("Password reset email sent to " + email);
+        sendPasswordResetEmail(auth, email)
+          .then(() => alert("Password reset email sent."))
+          .catch((error) => alert("Error: " + error.message));
       }
-    }
-  </script>
-</body>
-</html>
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem("nickname");
+        alert("Logged out.");
+      });
+    });
+  }
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const nickname = localStorage.getItem("nickname") || "User";
+      nicknameDisplay.textContent = nickname;
+      welcomeNickname.innerText = "👋 Welcome, " + nickname;
+      u
