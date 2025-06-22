@@ -1,167 +1,192 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TUNERA – Scopri nuova musica</title>
+  <title>TUNERA – Discover New Music</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #333;
     }
+
     .navbar {
+      position: sticky;
+      top: 0;
       background: #111;
-      color: #fff;
-      padding: 1rem;
-    }
-    .navbar .nav-container {
+      color: white;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 10;
     }
-    .navbar .nav-links {
+
+    .nav-links {
       list-style: none;
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
     }
-    .navbar .nav-links a {
+
+    .nav-links a {
       color: white;
       text-decoration: none;
+      transition: 0.3s;
     }
+
+    .nav-links a:hover {
+      color: #e91e63;
+    }
+
     .hero {
-      background: #e91e63;
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
       color: white;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       text-align: center;
     }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: white;
+      color: #ff4b2b;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffe9e4;
+    }
+
     .section {
-      padding: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
+
     .grid {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
+
     .card {
       background: white;
       padding: 1rem;
-      border-radius: 8px;
-      width: calc(50% - 1rem);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
+
     .footer {
       text-align: center;
-      padding: 1rem;
+      padding: 2rem;
       background: #222;
       color: white;
+      margin-top: 2rem;
     }
-    .btn {
-      background: #fff;
-      color: #e91e63;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-    }
+
     select, button {
-      padding: 0.5rem;
+      padding: 0.6rem;
+      font-size: 1rem;
       margin-top: 1rem;
-      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    a {
+      color: #e91e63;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="nav-container">
-    <h1 class="logo">TUNERA</h1>
+  <nav class="navbar">
+    <h1>TUNERA</h1>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
-      <li><a href="#artisti">Artisti</a></li>
-      <li><a href="#nuove">Uscite</a></li>
+      <li><a href="#preferences">Genres</a></li>
+      <li><a href="#artists">Artists</a></li>
       <li><a href="#playlist">Playlist</a></li>
     </ul>
-  </div>
-</nav>
+  </nav>
 
-<header id="home" class="hero">
-  <h1>Benvenuto su TUNERA</h1>
-  <p>Scopri musica nuova ogni giorno.</p>
-  <a href="#preferenze" class="btn">Personalizza</a>
-</header>
+  <header id="home" class="hero">
+    <h1>Welcome to TUNERA</h1>
+    <p>Discover new music tailored to your taste</p>
+    <a href="#preferences" class="btn">Start Exploring</a>
+  </header>
 
-<section id="preferenze" class="section">
-  <h2>🎧 Scegli il tuo genere preferito</h2>
-  <select id="genereSelect">
-    <option value="">-- Seleziona un genere --</option>
-    <option value="pop">Pop</option>
-    <option value="rock">Rock</option>
-    <option value="rap">Rap</option>
-    <option value="metal">Metal</option>
-  </select>
-  <button onclick="mostraSuggerimenti()">Mostra Suggerimenti</button>
+  <section id="preferences" class="section">
+    <h2>🎧 Choose Your Favorite Genre</h2>
+    <select id="genreSelect">
+      <option value="">-- Select a genre --</option>
+      <option value="pop">Pop</option>
+      <option value="rock">Rock</option>
+      <option value="rap">Rap</option>
+      <option value="metal">Metal</option>
+    </select>
+    <button onclick="showSuggestions()">Show Suggestions</button>
+    <div id="suggestions" class="grid"></div>
+  </section>
 
-  <div class="results" id="suggerimenti"></div>
-</section>
+  <section id="artists" class="section">
+    <h2>🎤 Recommended Artists</h2>
+    <div class="grid" id="artistGrid">
+      <!-- Filled dynamically -->
+    </div>
+  </section>
 
-<section id="nuove" class="section">
-  <h2>🔥 Nuove Uscite</h2>
-  <ul>
-    <li>Album XYZ – Artista</li>
-    <li>Singolo ABC – Artista</li>
-  </ul>
-</section>
+  <section id="playlist" class="section">
+    <h2>🔥 Monthly Playlist</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
 
-<section id="playlist" class="section">
-  <h2>🎧 Playlist del Mese</h2>
-  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-</section>
+  <footer class="footer">
+    <p>Contact us on <a href="#">Instagram</a> — &copy; 2025 TUNERA</p>
+  </footer>
 
-<footer class="footer">
-  <p>Contattaci su <a href="#">Instagram</a> – &copy; 2025 Tunera</p>
-</footer>
+  <script>
+    const artists = [
+      { name: "Dua Lipa", genre: "pop", link: "https://www.dualipa.com/" },
+      { name: "Imagine Dragons", genre: "rock", link: "https://www.imaginedragonsmusic.com/" },
+      { name: "Kendrick Lamar", genre: "rap", link: "https://oklama.com/" },
+      { name: "TesseracT", genre: "metal", link: "https://www.tesseractband.co.uk/" }
+    ];
 
-<script>
-  const artisti = [
-    { nome: "Dua Lipa", genere: "pop", link: "https://www.dualipa.com/" },
-    { nome: "Imagine Dragons", genere: "rock", link: "https://www.imaginedragonsmusic.com/" },
-    { nome: "Kendrick Lamar", genere: "rap", link: "https://oklama.com/" },
-    { nome: "TesseracT", genere: "metal", link: "https://www.tesseractband.co.uk/" }
-  ];
+    const playlists = {
+      pop: "Pop Party 2025",
+      rock: "Rock Legends",
+      rap: "Top Rap Picks",
+      metal: "Progressive Metal Essentials"
+    };
 
-  const playlist = {
-    pop: "Pop Party 2025",
-    rock: "Rock Legends",
-    rap: "Rap Italiano",
-    metal: "Progressive Metal Mix"
-  };
-
-  function mostraSuggerimenti() {
-    const genere = document.getElementById("genereSelect").value;
-    const risultati = document.getElementById("suggerimenti");
-    risultati.innerHTML = "";
-
-    if (!genere) {
-      risultati.innerHTML = "<p>Seleziona un genere per vedere suggerimenti.</p>";
-      return;
-    }
-
-    const artistiFiltrati = artisti.filter(a => a.genere === genere);
-    risultati.innerHTML += `<h3>🎤 Artisti Consigliati</h3>`;
-    artistiFiltrati.forEach(a => {
-      risultati.innerHTML += `
-        <div class='card'>
-          <strong>${a.nome}</strong> (${a.genere})<br />
-          <a href="${a.link}" target="_blank">Pagina ufficiale</a>
-        </div>`;
-    });
-
-    risultati.innerHTML += `<h3>🎵 Playlist Suggerita</h3>
-      <div class='card'>${playlist[genere]}</div>`;
-  }
-</script>
-
-</body>
-</html>
+    function showSuggestions() {
+      const genre = document.getElementById("genreSelect").value;
+      const container = document.getElementById("suggestions");
+      const artistGrid = document.getElementById("artistGrid");
+      container.innerHTML = "";
+      artis
