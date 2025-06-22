@@ -1,101 +1,86 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TUNERA – Scopri nuova musica</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+<section id="ricerca" class="section">
+  <h2>🔍 Cerca Artisti per Genere</h2>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <h1 class="logo">TUNERA</h1>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#artisti">Artisti</a></li>
-        <li><a href="#nuove">Uscite</a></li>
-        <li><a href="#playlist">Playlist</a></li>
-        <li><a href="#musica">🎶 Legion</a></li>
-      </ul>
-    </div>
-  </nav>
+  <input
+    type="text"
+    id="genereInput"
+    placeholder="Scrivi un genere (es: rock, pop, rap...)"
+    style="padding: 10px; width: 80%; margin-bottom: 20px;"
+    onkeyup="filtraArtisti()"
+  />
 
-  <!-- HERO -->
-  <header id="home" class="hero">
-    <h1>TUNERA</h1>
-    <p>Scopri musica nuova ogni giorno.</p>
-    <a href="#artisti" class="btn">Scopri Ora</a>
-  </header>
+  <div id="risultatiArtisti" class="grid">
+    <!-- Artisti filtrati appariranno qui -->
+  </div>
+</section>
 
-  <!-- ARTISTI -->
-  <section id="artisti" class="section">
-    <h2>🎤 Artisti Consigliati</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://via.placeholder.com/150" alt="Artista 1" />
-        <h3>Nome Artista 1</h3>
-        <p>Genere & vibe musicale</p>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/150" alt="Artista 2" />
-        <h3>Nome Artista 2</h3>
-        <p>Descrizione breve</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- NUOVE USCITE -->
-  <section id="nuove" class="section">
-    <h2>🔥 Nuove Uscite</h2>
-    <ul>
-      <li>Album XYZ – Artista</li>
-      <li>Singolo ABC – Artista</li>
-    </ul>
-  </section>
-
-  <!-- PLAYLIST -->
-  <section id="playlist" class="section">
-    <h2>🎧 Playlist del Mese</h2>
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
-      width="100%" height="152" frameborder="0" allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-    </iframe>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>Contattaci su <a href="#">Instagram</a> – &copy; 2025 Tunera</p>
-  </footer>
-
-  <!-- SEZIONE MUSICA -->
-  <section class="section" id="musica">
-    <h2>🎶 Ascolta “Legion” – TesseracT</h2>
-    <button onclick="playLegion()" style="padding: 10px 20px; background-color: #ff3c78; border: none; color: white; border-radius: 30px; cursor: pointer;">
-      ▶️ Avvia Musica
-    </button>
-    <iframe
-      id="yt-player"
-      width="0"
-      height="0"
-      style="display: none;"
-      allow="autoplay">
-    </iframe>
-    <p style="margin-top: 1rem; color: #ccc;">
-      Clicca il pulsante per ascoltare il brano da YouTube.
-    </p>
-  </section>
-
-  <!-- SCRIPT PER LA MUSICA -->
-  <script>
-    function playLegion() {
-      const iframe = document.getElementById('yt-player');
-      iframe.src = "https://www.youtube.com/embed/pHZXTmPnMso?autoplay=1&loop=1&playlist=pHZXTmPnMso";
+<script>
+  const artisti = [
+    {
+      nome: "TesseracT",
+      genere: "metal",
+      links: {
+        spotify: "https://open.spotify.com/artist/3Uwc9CNEvG6XkBmStGdS3A",
+        youtube: "https://www.youtube.com/@TesseracTband",
+        sito: "https://www.tesseractband.co.uk/"
+      }
+    },
+    {
+      nome: "Dua Lipa",
+      genere: "pop",
+      links: {
+        spotify: "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we",
+        instagram: "https://www.instagram.com/dualipa/",
+        sito: "https://dualipa.com/"
+      }
+    },
+    {
+      nome: "Kendrick Lamar",
+      genere: "rap",
+      links: {
+        spotify: "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg",
+        instagram: "https://www.instagram.com/kendricklamar/",
+        sito: "https://oklama.com/"
+      }
+    },
+    {
+      nome: "Imagine Dragons",
+      genere: "rock",
+      links: {
+        spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
+        youtube: "https://www.youtube.com/user/ImagineDragons",
+        sito: "https://www.imaginedragonsmusic.com/"
+      }
     }
-  </script>
+  ];
 
-</body>
-</html>
-   
+  function filtraArtisti() {
+    const input = document.getElementById("genereInput").value.toLowerCase();
+    const container = document.getElementById("risultatiArtisti");
+    container.innerHTML = "";
+
+    const filtrati = artisti.filter(artista =>
+      artista.genere.toLowerCase().includes(input)
+    );
+
+    filtrati.forEach(artista => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <h3>${artista.nome}</h3>
+        <p>Genere: ${artista.genere}</p>
+        <div>
+          ${artista.links.spotify ? `<a href="${artista.links.spotify}" target="_blank">🎵 Spotify</a> ` : ""}
+          ${artista.links.youtube ? `<a href="${artista.links.youtube}" target="_blank">▶️ YouTube</a> ` : ""}
+          ${artista.links.instagram ? `<a href="${artista.links.instagram}" target="_blank">📸 Instagram</a> ` : ""}
+          ${artista.links.sito ? `<a href="${artista.links.sito}" target="_blank">🌐 Sito</a>` : ""}
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    if (filtrati.length === 0) {
+      container.innerHTML = "<p>Nessun artista trovato per questo genere.</p>";
+    }
+  }
+</script>
