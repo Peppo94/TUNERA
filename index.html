@@ -4,214 +4,164 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TUNERA – Scopri nuova musica</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
+      padding: 0;
+      background: #f9f9f9;
     }
     .navbar {
       background: #111;
+      color: #fff;
       padding: 1rem;
-      color: white;
     }
-    .nav-container {
+    .navbar .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .nav-links {
+    .navbar .nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
     }
-    .nav-links a {
+    .navbar .nav-links a {
       color: white;
       text-decoration: none;
     }
     .hero {
+      background: #e91e63;
+      color: white;
+      padding: 4rem 2rem;
       text-align: center;
-      padding: 3rem 1rem;
+    }
+    .section {
+      padding: 2rem;
+    }
+    .grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      width: calc(50% - 1rem);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .footer {
+      text-align: center;
+      padding: 1rem;
       background: #222;
       color: white;
     }
     .btn {
-      background: #e91e63;
-      color: white;
-      padding: 0.7rem 1.2rem;
-      border: none;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .section {
-      padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      background: #f1f1f1;
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-    footer a {
+      background: #fff;
       color: #e91e63;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
       text-decoration: none;
+    }
+    select, button {
+      padding: 0.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <h1 class="logo">TUNERA</h1>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#artisti">Artisti</a></li>
-        <li><a href="#nuove">Uscite</a></li>
-        <li><a href="#playlist">Playlist</a></li>
-        <li><a href="#ricerca">Ricerca</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <header id="home" class="hero">
-    <h1>TUNERA</h1>
-    <p>Scopri musica nuova ogni giorno.</p>
-    <a href="#artisti" class="btn">Scopri Ora</a>
-  </header>
-
-  <section id="artisti" class="section">
-    <h2>🎤 Artisti Consigliati</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://via.placeholder.com/150" alt="Artista 1" />
-        <h3>Nome Artista 1</h3>
-        <p>Genere & vibe musicale</p>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/150" alt="Artista 2" />
-        <h3>Nome Artista 2</h3>
-        <p>Descrizione breve</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="nuove" class="section">
-    <h2>🔥 Nuove Uscite</h2>
-    <ul>
-      <li>Album XYZ – Artista</li>
-      <li>Singolo ABC – Artista</li>
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="logo">TUNERA</h1>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#artisti">Artisti</a></li>
+      <li><a href="#nuove">Uscite</a></li>
+      <li><a href="#playlist">Playlist</a></li>
     </ul>
-  </section>
+  </div>
+</nav>
 
-  <section id="playlist" class="section">
-    <h2>🎧 Playlist del Mese</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-  </section>
+<header id="home" class="hero">
+  <h1>Benvenuto su TUNERA</h1>
+  <p>Scopri musica nuova ogni giorno.</p>
+  <a href="#preferenze" class="btn">Personalizza</a>
+</header>
 
-  <section id="ricerca" class="section" style="background-color: #f7f7f7;">
-    <h2 style="text-align: center; margin-bottom: 10px;">🔍 Cerca Artisti per Genere</h2>
-    <p style="text-align: center; color: #666; margin-bottom: 30px;">Scrivi un genere (es: rock, pop, rap...) per trovare artisti consigliati.</p>
+<section id="preferenze" class="section">
+  <h2>🎧 Scegli il tuo genere preferito</h2>
+  <select id="genereSelect">
+    <option value="">-- Seleziona un genere --</option>
+    <option value="pop">Pop</option>
+    <option value="rock">Rock</option>
+    <option value="rap">Rap</option>
+    <option value="metal">Metal</option>
+  </select>
+  <button onclick="mostraSuggerimenti()">Mostra Suggerimenti</button>
 
-    <div style="display: flex; justify-content: center; margin-bottom: 30px;">
-      <input
-        type="text"
-        id="genereInput"
-        placeholder="Es. pop, metal, rap..."
-        style="padding: 12px 20px; width: 90%; max-width: 500px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px;"
-        onkeyup="filtraArtisti()"
-      />
-    </div>
+  <div class="results" id="suggerimenti"></div>
+</section>
 
-    <div id="risultatiArtisti" class="grid" style="gap: 25px;">
-      <!-- Risultati qui -->
-    </div>
-  </section>
+<section id="nuove" class="section">
+  <h2>🔥 Nuove Uscite</h2>
+  <ul>
+    <li>Album XYZ – Artista</li>
+    <li>Singolo ABC – Artista</li>
+  </ul>
+</section>
 
-  <footer class="footer">
-    <p>Contattaci su <a href="#">Instagram</a> – &copy; 2025 Tunera</p>
-  </footer>
+<section id="playlist" class="section">
+  <h2>🎧 Playlist del Mese</h2>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</section>
 
-  <script>
-    const artisti = [
-      {
-        nome: "TesseracT",
-        genere: "metal",
-        links: {
-          spotify: "https://open.spotify.com/artist/3Uwc9CNEvG6XkBmStGdS3A",
-          youtube: "https://www.youtube.com/@TesseracTband",
-          sito: "https://www.tesseractband.co.uk/"
-        }
-      },
-      {
-        nome: "Dua Lipa",
-        genere: "pop",
-        links: {
-          spotify: "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we",
-          instagram: "https://www.instagram.com/dualipa/",
-          sito: "https://dualipa.com/"
-        }
-      },
-      {
-        nome: "Kendrick Lamar",
-        genere: "rap",
-        links: {
-          spotify: "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg",
-          instagram: "https://www.instagram.com/kendricklamar/",
-          sito: "https://oklama.com/"
-        }
-      },
-      {
-        nome: "Imagine Dragons",
-        genere: "rock",
-        links: {
-          spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
-          youtube: "https://www.youtube.com/user/ImagineDragons",
-          sito: "https://www.imaginedragonsmusic.com/"
-        }
-      }
-    ];
+<footer class="footer">
+  <p>Contattaci su <a href="#">Instagram</a> – &copy; 2025 Tunera</p>
+</footer>
 
-    function filtraArtisti() {
-      const input = document.getElementById("genereInput").value.toLowerCase();
-      const container = document.getElementById("risultatiArtisti");
-      container.innerHTML = "";
+<script>
+  const artisti = [
+    { nome: "Dua Lipa", genere: "pop", link: "https://www.dualipa.com/" },
+    { nome: "Imagine Dragons", genere: "rock", link: "https://www.imaginedragonsmusic.com/" },
+    { nome: "Kendrick Lamar", genere: "rap", link: "https://oklama.com/" },
+    { nome: "TesseracT", genere: "metal", link: "https://www.tesseractband.co.uk/" }
+  ];
 
-      const filtrati = artisti.filter(artista =>
-        artista.genere.toLowerCase().includes(input)
-      );
+  const playlist = {
+    pop: "Pop Party 2025",
+    rock: "Rock Legends",
+    rap: "Rap Italiano",
+    metal: "Progressive Metal Mix"
+  };
 
-      filtrati.forEach(artista => {
-        const div = document.createElement("div");
-        div.className = "card";
-        div.innerHTML = `
-          <h3>${artista.nome}</h3>
-          <p><strong>Genere:</strong> ${artista.genere}</p>
-          <div style="margin-top: 10px;">
-            ${artista.links.spotify ? `<a href="${artista.links.spotify}" target="_blank">🎵 Spotify</a> ` : ""}
-            ${artista.links.youtube ? `<a href="${artista.links.youtube}" target="_blank">▶️ YouTube</a> ` : ""}
-            ${artista.links.instagram ? `<a href="${artista.links.instagram}" target="_blank">📸 Instagram</a> ` : ""}
-            ${artista.links.sito ? `<a href="${artista.links.sito}" target="_blank">🌐 Sito</a>` : ""}
-          </div>
-        `;
-        container.appendChild(div);
-      });
+  function mostraSuggerimenti() {
+    const genere = document.getElementById("genereSelect").value;
+    const risultati = document.getElementById("suggerimenti");
+    risultati.innerHTML = "";
 
-      if (filtrati.length === 0 && input.trim() !== "") {
-        container.innerHTML = "<p style='text-align: center; color: #999;'>Nessun artista trovato per questo genere.</p>";
-      }
+    if (!genere) {
+      risultati.innerHTML = "<p>Seleziona un genere per vedere suggerimenti.</p>";
+      return;
     }
-  </script>
+
+    const artistiFiltrati = artisti.filter(a => a.genere === genere);
+    risultati.innerHTML += `<h3>🎤 Artisti Consigliati</h3>`;
+    artistiFiltrati.forEach(a => {
+      risultati.innerHTML += `
+        <div class='card'>
+          <strong>${a.nome}</strong> (${a.genere})<br />
+          <a href="${a.link}" target="_blank">Pagina ufficiale</a>
+        </div>`;
+    });
+
+    risultati.innerHTML += `<h3>🎵 Playlist Suggerita</h3>
+      <div class='card'>${playlist[genere]}</div>`;
+  }
+</script>
+
 </body>
 </html>
