@@ -1,230 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TUNERA – Discover New Music</title>
-<style>
-  /* Reset base */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TUNERA – Discover Music You Love</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #ff3366;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #ff6699;
+    }
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fff0f5;
-    color: #222;
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+    /* Navbar */
+    nav.navbar {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    }
+    nav.navbar h1 {
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: #ff3366;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+    nav.navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav.navbar ul li {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav.navbar ul li a {
+      color: #eee;
+    }
 
-  nav.navbar {
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(255,75,44,0.4);
-  }
+    /* Hero Section */
+    header.hero {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      background: linear-gradient(135deg, #ff3366, #ff6699);
+      color: #fff;
+      box-shadow: inset 0 -4rem 4rem -3rem #c9305e;
+      user-select: none;
+    }
+    header.hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 4px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+    header.hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    header.hero .btn {
+      background: #fff;
+      color: #ff3366;
+      padding: 0.75rem 2.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(255, 51, 102, 0.6);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    header.hero .btn:hover {
+      background: #ff6699;
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(255, 102, 153, 0.9);
+      transform: translateY(-3px);
+    }
 
-  nav.navbar h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-  }
+    /* Main Sections */
+    section {
+      max-width: 1000px;
+      margin: 3rem auto 5rem;
+      padding: 0 1.5rem;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      color: #ff3366;
+      text-shadow: 1px 1px 5px rgba(255, 51, 102, 0.5);
+      user-select: none;
+    }
 
-  nav.navbar ul.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-  }
+    /* Genre Selector */
+    #preferences {
+      text-align: center;
+      color: #eee;
+    }
+    #preferences select, #preferences button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      margin: 0.6rem 0.8rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+    #preferences select {
+      max-width: 300px;
+      background: #222;
+      color: #fff;
+    }
+    #preferences button {
+      background: #ff3366;
+      color: #fff;
+    }
+    #preferences button:hover {
+      background: #ff6699;
+      box-shadow: 0 6px 12px rgba(255,102,153,0.8);
+      transform: translateY(-3px);
+    }
 
-  nav.navbar ul.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
+    /* Artist Grid */
+    #artistGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+      user-select: none;
+    }
+    .card {
+      background: #222;
+      border-radius: 15px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 20px rgba(255, 51, 102, 0.8);
+    }
+    .card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px #ff3366;
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ff6699;
+    }
+    .card a {
+      font-weight: 600;
+      margin-top: auto;
+      color: #ff3366;
+      padding: 0.3rem 0.7rem;
+      border-radius: 30px;
+      background: rgba(255, 51, 102, 0.15);
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+    .card a:hover {
+      background: rgba(255, 51, 102, 0.35);
+    }
 
-  nav.navbar ul.nav-links li a:hover {
-    color: #fff7f9;
-    text-shadow: 0 0 5px #fff7f9;
-  }
+    /* Playlist */
+    #playlist iframe {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      user-select: none;
+    }
 
-  header.hero {
-    background: linear-gradient(135deg, #ff416c, #ff4b2b);
-    color: white;
-    padding: 5rem 2rem;
-    text-align: center;
-    box-shadow: inset 0 0 50px #ff416c;
-  }
+    /* Footer */
+    footer.footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      user-select: none;
+      margin-top: auto;
+    }
+    footer.footer a {
+      color: #ff3366;
+    }
 
-  header.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-  }
+    /* Registration / Login forms */
+    .auth-container {
+      max-width: 380px;
+      margin: 0 auto;
+      background: #222;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(255,51,102,0.3);
+      color: #eee;
+      user-select: none;
+    }
+    .auth-container h2 {
+      text-align: center;
+      color: #ff3366;
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+    .auth-container label {
+      display: block;
+      margin: 1rem 0 0.4rem 0;
+      font-weight: 600;
+    }
+    .auth-container input[type="email"],
+    .auth-container input[type="password"],
+    .auth-container input[type="text"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 30px;
+      border: none;
+      background: #333;
+      color: #eee;
+      font-size: 1rem;
+      box-shadow: inset 0 0 5px rgba(255,51,102,0.7);
+      transition: box-shadow 0.3s ease;
+    }
+    .auth-container input[type="email"]:focus,
+    .auth-container input[type="password"]:focus,
+    .auth-container input[type="text"]:focus {
+      outline: none;
+      box-shadow: 0 0 8px #ff3366;
+    }
+    .auth-container button {
+      margin-top: 1.8rem;
+      width: 100%;
+      background: #ff3366;
+      border: none;
+      border-radius: 50px;
+      padding: 0.75rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255,51,102,0.6);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .auth-container button:hover {
+      background: #ff6699;
+      box-shadow: 0 12px 24px rgba(255,102,153,0.9);
+    }
+    .auth-container .link-btn {
+      background: none;
+      border: none;
+      color: #ff6699;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .auth-container .link-btn:hover {
+      color: #ff3366;
+    }
+    .auth-message {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+      user-select: none;
+    }
+    .auth-message.success {
+      color: #4caf50;
+    }
+    .auth-message.error {
+      color: #e53935;
+    }
 
-  header.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    font-weight: 500;
-  }
+    /* Greeting */
+    #greeting {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      color: #ff6699;
+      user-select: none;
+    }
 
-  header.hero a.btn {
-    background: white;
-    color: #ff416c;
-    padding: 0.7rem 2rem;
-    border-radius: 30px;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 10px rgba(255,65,108,0.5);
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  header.hero a.btn:hover {
-    background: #ff4b2b;
-    color: white;
-    box-shadow: 0 6px 15px rgba(255,75,44,0.7);
-  }
-
-  section.section {
-    max-width: 960px;
-    margin: 2rem auto 3rem auto;
-    padding: 0 1rem;
-  }
-
-  section.section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #ff416c;
-    text-align: center;
-    font-weight: 700;
-    text-shadow: 0 0 3px #ff4b2b;
-  }
-
-  #preferences select,
-  #preferences button,
-  form input[type="email"],
-  form input[type="password"],
-  form input[type="text"],
-  form button {
-    display: block;
-    width: 250px;
-    max-width: 90vw;
-    margin: 1rem auto;
-    padding: 0.6rem 1rem;
-    border-radius: 25px;
-    border: 2px solid #ff416c;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  #preferences select:focus,
-  #preferences button:hover,
-  form button:hover,
-  form input[type="email"]:focus,
-  form input[type="password"]:focus,
-  form input[type="text"]:focus {
-    background: #ff416c;
-    color: white;
-    border-color: #ff4b2b;
-    outline: none;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(255, 75, 44, 0.15);
-    padding: 1rem;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 75, 44, 0.3);
-  }
-
-  .card img {
-    width: 100%;
-    max-height: 150px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 0.8rem;
-    box-shadow: 0 2px 6px rgba(255, 65, 108, 0.3);
-  }
-
-  .card h3 {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: #ff416c;
-  }
-
-  .card a {
-    color: #ff4b2b;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.95rem;
-  }
-
-  .card a:hover {
-    text-decoration: underline;
-  }
-
-  #regMessage,
-  #loginMessage {
-    text-align: center;
-    margin-top: 0.5rem;
-    font-weight: 600;
-  }
-
-  #regMessage.success,
-  #loginMessage.success {
-    color: green;
-  }
-
-  #regMessage.error,
-  #loginMessage.error {
-    color: red;
-  }
-
-  #loggedInUser {
-    text-align: center;
-    margin-top: 1rem;
-    font-weight: 700;
-    color: #ff416c;
-  }
-
-  /* Footer */
-  footer.footer {
-    background: #ff416c;
-    color: white;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-top: auto;
-    box-sha
+    /* Responsive */
+    @media (max-width: 
