@@ -175,70 +175,25 @@
   </footer>
 
   <script>
-    const artists = {
-      pop: [
-        {
-          name: "Dua Lipa",
-          image: "https://i.scdn.co/image/ab6761610000e5ebc9e20c8dc67f31183e230eea",
-          link: "https://www.dualipa.com/"
-        },
-        {
-          name: "The Weeknd",
-          image: "https://i.scdn.co/image/ab6761610000e5eb44d4ed3aa5096f13b3e0f4f1",
-          link: "https://www.theweeknd.com/"
-        }
-      ],
-      rock: [
-        {
-          name: "Imagine Dragons",
-          image: "https://i.scdn.co/image/ab6761610000e5eb67020fdaf7c77f5c2d3f5c1d",
-          link: "https://www.imaginedragonsmusic.com/"
-        },
-        {
-          name: "Muse",
-          image: "https://i.scdn.co/image/ab6761610000e5eb4ef8f4ee4e01347dbdf18df2",
-          link: "https://www.muse.mu/"
-        }
-      ],
-      rap: [
-        {
-          name: "Kendrick Lamar",
-          image: "https://i.scdn.co/image/ab6761610000e5eb75e19ed5d22a4c47d4d2e370",
-          link: "https://oklama.com/"
-        },
-        {
-          name: "J. Cole",
-          image: "https://i.scdn.co/image/ab6761610000e5ebcf7baaa8ef6d4b79530d45ad",
-          link: "https://www.dreamville.com/"
-        }
-      ],
-      metal: [
-        {
-          name: "Metallica",
-          image: "https://i.scdn.co/image/ab6761610000e5ebdfbfa1a46cbfbc77dbf1b2c5",
-          link: "https://www.metallica.com/"
-        },
-        {
-          name: "TesseracT",
-          image: "https://i.scdn.co/image/ab6761610000e5ebceea6b969f7b5a2bc05a17c3",
-          link: "https://www.tesseractband.co.uk/"
-        }
-      ]
-    };
+    async function loadArtists() {
+      const res = await fetch('artists.json');
+      return res.json();
+    }
 
-    function showSuggestions() {
+    async function showSuggestions() {
+      const artists = await loadArtists();
       const genre = document.getElementById("genreSelect").value;
       const container = document.getElementById("artistGrid");
       container.innerHTML = "";
 
-      if (!genre || !artists[genre]) {
+      if (!genre || !artists[genre] || artists[genre].length === 0) {
         container.innerHTML = "<p>Please select a valid genre.</p>";
         return;
       }
 
       artists[genre].forEach(artist => {
         const card = document.createElement("div");
-        card.classList.add("card");
+        card.className = "card";
         card.innerHTML = `
           <img src="${artist.image}" alt="${artist.name}" />
           <h3>${artist.name}</h3>
@@ -251,5 +206,3 @@
 
 </body>
 </html>
-
-  
