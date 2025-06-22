@@ -1,86 +1,233 @@
-<section id="ricerca" class="section">
-  <h2>🔍 Cerca Artisti per Genere</h2>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TUNERA – Scopri nuova musica</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
 
-  <input
-    type="text"
-    id="genereInput"
-    placeholder="Scrivi un genere (es: rock, pop, rap...)"
-    style="padding: 10px; width: 80%; margin-bottom: 20px;"
-    onkeyup="filtraArtisti()"
-  />
+    .navbar {
+      background-color: #111;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
 
-  <div id="risultatiArtisti" class="grid">
-    <!-- Artisti filtrati appariranno qui -->
-  </div>
-</section>
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
 
-<script>
-  const artisti = [
-    {
-      nome: "TesseracT",
-      genere: "metal",
-      links: {
-        spotify: "https://open.spotify.com/artist/3Uwc9CNEvG6XkBmStGdS3A",
-        youtube: "https://www.youtube.com/@TesseracTband",
-        sito: "https://www.tesseractband.co.uk/"
+    .logo {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding-top: 100px;
+      text-align: center;
+      background-color: #222;
+      color: white;
+      padding-bottom: 50px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #f04;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .section {
+      padding: 60px 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #eee;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    section {
+      scroll-margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="logo">TUNERA</h1>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#artisti">Artisti</a></li>
+        <li><a href="#nuove">Uscite</a></li>
+        <li><a href="#playlist">Playlist</a></li>
+        <li><a href="#ricerca">Ricerca</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <h1>TUNERA</h1>
+    <p>Scopri musica nuova ogni giorno.</p>
+    <a href="#artisti" class="btn">Scopri Ora</a>
+  </header>
+
+  <section id="artisti" class="section">
+    <h2>🎤 Artisti Consigliati</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/150" alt="Artista 1" />
+        <h3>Nome Artista 1</h3>
+        <p>Genere & vibe musicale</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/150" alt="Artista 2" />
+        <h3>Nome Artista 2</h3>
+        <p>Descrizione breve</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="nuove" class="section">
+    <h2>🔥 Nuove Uscite</h2>
+    <ul>
+      <li>Album XYZ – Artista</li>
+      <li>Singolo ABC – Artista</li>
+    </ul>
+  </section>
+
+  <section id="playlist" class="section">
+    <h2>🎧 Playlist del Mese</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
+
+  <section id="ricerca" class="section">
+    <h2>🔍 Cerca Artisti per Genere</h2>
+    <input
+      type="text"
+      id="genereInput"
+      placeholder="Scrivi un genere (es: rock, pop, rap...)"
+      style="padding: 10px; width: 80%; margin-bottom: 20px;"
+      onkeyup="filtraArtisti()"
+    />
+    <div id="risultatiArtisti" class="grid">
+      <!-- Risultati dinamici -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Contattaci su <a href="#">Instagram</a> – &copy; 2025 Tunera</p>
+  </footer>
+
+  <script>
+    const artisti = [
+      {
+        nome: "TesseracT",
+        genere: "metal",
+        links: {
+          spotify: "https://open.spotify.com/artist/3Uwc9CNEvG6XkBmStGdS3A",
+          youtube: "https://www.youtube.com/@TesseracTband",
+          sito: "https://www.tesseractband.co.uk/"
+        }
+      },
+      {
+        nome: "Dua Lipa",
+        genere: "pop",
+        links: {
+          spotify: "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we",
+          instagram: "https://www.instagram.com/dualipa/",
+          sito: "https://dualipa.com/"
+        }
+      },
+      {
+        nome: "Kendrick Lamar",
+        genere: "rap",
+        links: {
+          spotify: "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg",
+          instagram: "https://www.instagram.com/kendricklamar/",
+          sito: "https://oklama.com/"
+        }
+      },
+      {
+        nome: "Imagine Dragons",
+        genere: "rock",
+        links: {
+          spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
+          youtube: "https://www.youtube.com/user/ImagineDragons",
+          sito: "https://www.imaginedragonsmusic.com/"
+        }
       }
-    },
-    {
-      nome: "Dua Lipa",
-      genere: "pop",
-      links: {
-        spotify: "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we",
-        instagram: "https://www.instagram.com/dualipa/",
-        sito: "https://dualipa.com/"
-      }
-    },
-    {
-      nome: "Kendrick Lamar",
-      genere: "rap",
-      links: {
-        spotify: "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg",
-        instagram: "https://www.instagram.com/kendricklamar/",
-        sito: "https://oklama.com/"
-      }
-    },
-    {
-      nome: "Imagine Dragons",
-      genere: "rock",
-      links: {
-        spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
-        youtube: "https://www.youtube.com/user/ImagineDragons",
-        sito: "https://www.imaginedragonsmusic.com/"
+    ];
+
+    function filtraArtisti() {
+      const input = document.getElementById("genereInput").value.toLowerCase();
+      const container = document.getElementById("risultatiArtisti");
+      container.innerHTML = "";
+
+      const filtrati = artisti.filter(artista =>
+        artista.genere.toLowerCase().includes(input)
+      );
+
+      filtrati.forEach(artista => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <h3>${artista.nome}</h3>
+          <p>Genere: ${artista.genere}</p>
+          <div>
+            ${artista.links.spotify ? `<a href="${artista.links.spotify}" target="_blank">🎵 Spotify</a> ` : ""}
+            ${artista.links.youtube ? `<a href="${artista.links.youtube}" target="_blank">▶️ YouTube</a> ` : ""}
+            ${artista.links.instagram ? `<a href="${artista.links.instagram}" target="_blank">📸 Instagram</a> ` : ""}
+            ${artista.links.sito ? `<a href="${artista.links.sito}" target="_blank">🌐 Sito</a>` : ""}
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      if (filtrati.length === 0) {
+        container.innerHTML = "<p>Nessun artista trovato per questo genere.</p>";
       }
     }
-  ];
+  </script>
 
-  function filtraArtisti() {
-    const input = document.getElementById("genereInput").value.toLowerCase();
-    const container = document.getElementById("risultatiArtisti");
-    container.innerHTML = "";
+</body>
+</html>
 
-    const filtrati = artisti.filter(artista =>
-      artista.genere.toLowerCase().includes(input)
-    );
-
-    filtrati.forEach(artista => {
-      const div = document.createElement("div");
-      div.className = "card";
-      div.innerHTML = `
-        <h3>${artista.nome}</h3>
-        <p>Genere: ${artista.genere}</p>
-        <div>
-          ${artista.links.spotify ? `<a href="${artista.links.spotify}" target="_blank">🎵 Spotify</a> ` : ""}
-          ${artista.links.youtube ? `<a href="${artista.links.youtube}" target="_blank">▶️ YouTube</a> ` : ""}
-          ${artista.links.instagram ? `<a href="${artista.links.instagram}" target="_blank">📸 Instagram</a> ` : ""}
-          ${artista.links.sito ? `<a href="${artista.links.sito}" target="_blank">🌐 Sito</a>` : ""}
-        </div>
-      `;
-      container.appendChild(div);
-    });
-
-    if (filtrati.length === 0) {
-      container.innerHTML = "<p>Nessun artista trovato per questo genere.</p>";
-    }
-  }
-</script>
