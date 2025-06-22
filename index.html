@@ -2,397 +2,226 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TUNERA – Discover Music You Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TUNERA – Discover New Music</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #eee;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      background: #0f0f0f;
+      color: #f1f1f1;
+      background-size: cover;
+      transition: background 0.5s ease;
     }
-    a {
-      color: #ff3366;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #ff6699;
-    }
-
-    /* Navbar */
-    nav.navbar {
+    .navbar {
+      position: sticky;
+      top: 0;
       background: #111;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
       z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
     }
-    nav.navbar h1 {
-      font-weight: 900;
-      font-size: 1.8rem;
-      color: #ff3366;
-      letter-spacing: 2px;
-      user-select: none;
-    }
-    nav.navbar ul {
+    .nav-links {
       list-style: none;
       display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
+      gap: 1.5rem;
     }
-    nav.navbar ul li {
-      font-weight: 600;
-      font-size: 1rem;
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
     }
-    nav.navbar ul li a {
-      color: #eee;
+    .nav-links a:hover {
+      color: #e91e63;
     }
-
-    /* Hero Section */
-    header.hero {
+    .hero {
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+      color: white;
+      padding: 5rem 2rem;
       text-align: center;
-      padding: 5rem 2rem 4rem;
-      background: linear-gradient(135deg, #ff3366, #ff6699);
-      color: #fff;
-      box-shadow: inset 0 -4rem 4rem -3rem #c9305e;
-      user-select: none;
     }
-    header.hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      letter-spacing: 4px;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    }
-    header.hero p {
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-    }
-    header.hero .btn {
-      background: #fff;
-      color: #ff3366;
-      padding: 0.75rem 2.5rem;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border-radius: 50px;
+    .btn {
+      background: white;
+      color: #ff4b2b;
+      padding: 0.7rem 1.5rem;
       border: none;
+      border-radius: 25px;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 6px 12px rgba(255, 51, 102, 0.6);
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-    header.hero .btn:hover {
-      background: #ff6699;
-      color: #fff;
-      box-shadow: 0 10px 20px rgba(255, 102, 153, 0.9);
-      transform: translateY(-3px);
-    }
-
-    /* Main Sections */
-    section {
-      max-width: 1000px;
-      margin: 3rem auto 5rem;
-      padding: 0 1.5rem;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-      text-align: center;
-      color: #ff3366;
-      text-shadow: 1px 1px 5px rgba(255, 51, 102, 0.5);
-      user-select: none;
-    }
-
-    /* Genre Selector */
-    #preferences {
-      text-align: center;
-      color: #eee;
-    }
-    #preferences select, #preferences button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
-      margin: 0.6rem 0.8rem;
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-      user-select: none;
-    }
-    #preferences select {
-      max-width: 300px;
-      background: #222;
-      color: #fff;
-    }
-    #preferences button {
-      background: #ff3366;
-      color: #fff;
-    }
-    #preferences button:hover {
-      background: #ff6699;
-      box-shadow: 0 6px 12px rgba(255,102,153,0.8);
-      transform: translateY(-3px);
-    }
-
-    /* Artist Grid */
-    #artistGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 2rem;
-      margin-top: 1rem;
-      user-select: none;
-    }
-    .card {
-      background: #222;
-      border-radius: 15px;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      color: #eee;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(255, 51, 102, 0.8);
-    }
-    .card img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 10px #ff3366;
-    }
-    .card h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #ff6699;
-    }
-    .card a {
-      font-weight: 600;
-      margin-top: auto;
-      color: #ff3366;
-      padding: 0.3rem 0.7rem;
-      border-radius: 30px;
-      background: rgba(255, 51, 102, 0.15);
-      transition: background 0.3s ease;
       text-decoration: none;
     }
-    .card a:hover {
-      background: rgba(255, 51, 102, 0.35);
-    }
-
-    /* Playlist */
-    #playlist iframe {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      user-select: none;
-    }
-
-    /* Footer */
-    footer.footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      user-select: none;
-      margin-top: auto;
-    }
-    footer.footer a {
-      color: #ff3366;
-    }
-
-    /* Registration / Login forms */
-    .auth-container {
-      max-width: 380px;
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
       margin: 0 auto;
-      background: #222;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 8px 24px rgba(255,51,102,0.3);
-      color: #eee;
-      user-select: none;
     }
-    .auth-container h2 {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background: #1c1c1c;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       text-align: center;
-      color: #ff3366;
-      margin-bottom: 1.5rem;
-      user-select: none;
+      transition: transform 0.3s;
     }
-    .auth-container label {
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .card audio {
+      margin-top: 10px;
+      display: none;
+    }
+    .card:hover audio {
       display: block;
-      margin: 1rem 0 0.4rem 0;
-      font-weight: 600;
     }
-    .auth-container input[type="email"],
-    .auth-container input[type="password"],
-    .auth-container input[type="text"] {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 30px;
-      border: none;
-      background: #333;
-      color: #eee;
-      font-size: 1rem;
-      box-shadow: inset 0 0 5px rgba(255,51,102,0.7);
-      transition: box-shadow 0.3s ease;
+    .artist-bio {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: 0.5rem;
     }
-    .auth-container input[type="email"]:focus,
-    .auth-container input[type="password"]:focus,
-    .auth-container input[type="text"]:focus {
-      outline: none;
-      box-shadow: 0 0 8px #ff3366;
-    }
-    .auth-container button {
-      margin-top: 1.8rem;
-      width: 100%;
-      background: #ff3366;
-      border: none;
-      border-radius: 50px;
-      padding: 0.75rem;
-      font-weight: 700;
-      font-size: 1.1rem;
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: #222;
       color: white;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255,51,102,0.6);
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    .auth-container button:hover {
-      background: #ff6699;
-      box-shadow: 0 12px 24px rgba(255,102,153,0.9);
-    }
-    .auth-container .link-btn {
-      background: none;
-      border: none;
-      color: #ff6699;
-      text-decoration: underline;
-      cursor: pointer;
-      padding: 0;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-    .auth-container .link-btn:hover {
-      color: #ff3366;
-    }
-    .auth-message {
-      margin-top: 1rem;
-      text-align: center;
-      font-weight: 600;
-      user-select: none;
-    }
-    .auth-message.success {
-      color: #4caf50;
-    }
-    .auth-message.error {
-      color: #e53935;
-    }
-
-    /* Greeting */
-    #greeting {
-      text-align: center;
-      font-size: 1.5rem;
       margin-top: 2rem;
-      color: #ff6699;
-      user-select: none;
     }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      header.hero h1 {
-        font-size: 2.2rem;
-      }
-      section {
-        margin: 2rem 1rem 3rem;
-      }
+    input, select, button {
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <h1>TUNERA</h1>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#preferences">Genres</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#playlist">Playlist</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+  </nav>
 
-<nav class="navbar">
-  <h1>TUNERA</h1>
-  <ul id="nav-links">
-    <li><a href="#home" onclick="showHome()">Home</a></li>
-    <li><a href="#discover" onclick="showDiscover()">Discover</a></li>
-    <li><a href="#register" onclick="showRegister()">Register / Login</a></li>
-  </ul>
-</nav>
+  <header id="home" class="hero">
+    <h1>Welcome to TUNERA</h1>
+    <p>Discover new music tailored to your taste</p>
+    <a href="#preferences" class="btn">Start Exploring</a>
+  </header>
 
-<header class="hero" id="home">
-  <h1>Discover Your Next Favorite Artist</h1>
-  <p>Personalized music suggestions, curated playlists, and more.</p>
-  <button class="btn" onclick="showDiscover()">Get Started</button>
-</header>
-
-<section id="discover" style="display:none;">
-  <h2>Choose Your Genre</h2>
-  <div id="preferences">
-    <select id="genreSelect" aria-label="Select music genre">
-      <option value="">-- Select Genre --</option>
-      <option value="rock">Rock</option>
+  <section id="preferences" class="section">
+    <h2>🎧 Choose Your Favorite Genre</h2>
+    <select id="genreSelect">
+      <option value="">-- Select a genre --</option>
       <option value="pop">Pop</option>
-      <option value="hiphop">Hip-Hop</option>
-      <option value="electronic">Electronic</option>
-      <option value="jazz">Jazz</option>
+      <option value="rock">Rock</option>
+      <option value="rap">Rap</option>
       <option value="metal">Metal</option>
-      <option value="country">Country</option>
-      <option value="reggae">Reggae</option>
     </select>
     <button onclick="showSuggestions()">Show Artists</button>
-  </div>
-  <div id="artistGrid" aria-live="polite"></div>
-
-  <section id="playlist" style="margin-top:3rem;">
-    <h2>Featured Playlist</h2>
-    <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   </section>
-</section>
 
-<section id="register" style="display:none;">
-  <div class="auth-container" aria-live="polite">
-    <h2 id="authTitle">Register</h2>
-    <label for="emailInput">Email:</label>
-    <input type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email" />
-    <label for="passwordInput">Password:</label>
-    <input type="password" id="passwordInput" placeholder="••••••••" required autocomplete="new-password" />
-    <label for="nicknameInput" id="nicknameLabel" style="display:none;">Choose a Nickname:</label>
-    <input type="text" id="nicknameInput" placeholder="Nickname" style="display:none;" autocomplete="nickname" />
+  <section id="artists" class="section">
+    <h2>🎤 Recommended Artists</h2>
+    <div class="grid" id="artistGrid"></div>
+  </section>
 
-    <button id="authBtn" onclick="handleRegister()">Register</button>
-    <button class="link-btn" onclick="toggleAuthMode()">Already have an account? Login</button>
-    <button class="link-btn" onclick="forgotPassword()" style="margin-top:0.5rem;">Forgot Password?</button>
+  <section id="playlist" class="section">
+    <h2>🔥 Monthly Playlist</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
 
-    <p id="authMessage" class="auth-message"></p>
-  </div>
-  <div id="greeting" aria-live="polite" style="display:none;"></div>
-</section>
+  <section id="register" class="section">
+    <h2>Register to TUNERA</h2>
+    <input type="email" id="email" placeholder="Email" required /><br>
+    <input type="password" id="password" placeholder="Password" required /><br>
+    <input type="text" id="nickname" placeholder="Choose your nickname" required /><br>
+    <button onclick="registerUser()">Register</button>
+    <p><a href="#" onclick="forgotPassword()">Forgot your password?</a></p>
+    <p>Already registered? <a href="#" onclick="showLogin()">Log in here</a></p>
+    <div id="loginForm" class="hidden">
+      <input type="email" id="loginEmail" placeholder="Email" required /><br>
+      <input type="password" id="loginPassword" placeholder="Password" required /><br>
+      <button onclick="loginUser()">Log In</button>
+    </div>
+    <p id="userDisplay"></p>
+  </section>
 
-<footer class="footer">
-  <p>© 2025 TUNERA - Made with ❤️ for your music journey</p>
-  <p>By Your Dev Buddy</p>
-</footer>
+  <footer class="footer">
+    <p>&copy; 2025 TUNERA | Contact us on <a href="#">Instagram</a></p>
+  </footer>
 
-<script>
-  // Firebase imp
+  <script type="module" src="firebase-auth.js"></script>
+  <script>
+    async function loadArtists() {
+      const res = await fetch('artists.json');
+      return res.json();
+    }
+
+    const genreBackgrounds = {
+      pop: 'linear-gradient(to right, #ff9a9e, #fad0c4)',
+      rock: 'linear-gradient(to right, #434343, #000000)',
+      rap: 'linear-gradient(to right, #000000, #434343)',
+      metal: 'linear-gradient(to right, #485563, #29323c)'
+    };
+
+    async function showSuggestions() {
+      const artists = await loadArtists();
+      const genre = document.getElementById("genreSelect").value;
+      const container = document.getElementById("artistGrid");
+      container.innerHTML = "";
+      document.body.style.background = genreBackgrounds[genre] || '#0f0f0f';
+
+      if (!genre || !artists[genre] || artists[genre].length === 0) {
+        container.innerHTML = "<p>Please select a valid genre.</p>";
+        return;
+      }
+
+      artists[genre].forEach(artist => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${artist.image}" alt="${artist.name}" />
+          <h3>${artist.name}</h3>
+          <p class="artist-bio">${artist.bio || ''}</p>
+          <a href="${artist.link}" target="_blank">Official Page</a>
+          ${artist.preview ? `<audio controls src="${artist.preview}"></audio>` : ''}
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function showLogin() {
+      document.getElementById('loginForm').classList.toggle('hidden');
+    }
+
+    function forgotPassword() {
+      const email = prompt("Enter your email to reset your password:");
+      if (email) {
+        // Firebase reset logic here
+        alert("Password reset email sent to " + email);
+      }
+    }
+  </script>
+</body>
+</html>
