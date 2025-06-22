@@ -1,0 +1,29 @@
+<script>
+async function loadArtists() {
+  const res = await fetch('artists.json');
+  return res.json();
+}
+
+async function showSuggestions() {
+  const artists = await loadArtists();
+  const genre = document.getElementById("genreSelect").value;
+  const container = document.getElementById("artistGrid");
+  container.innerHTML = "";
+
+  if (!genre || !artists[genre] || artists[genre].length === 0) {
+    container.innerHTML = "<p>Please select a valid genre.</p>";
+    return;
+  }
+
+  artists[genre].forEach(artist => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${artist.image}" alt="${artist.name}" />
+      <h3>${artist.name}</h3>
+      <a href="${artist.link}" target="_blank">Official Page</a>
+    `;
+    container.appendChild(card);
+  });
+}
+</script>
