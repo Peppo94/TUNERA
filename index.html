@@ -94,6 +94,12 @@
       text-align: center;
     }
 
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
     .footer {
       text-align: center;
       padding: 2rem;
@@ -149,20 +155,19 @@
       <option value="rap">Rap</option>
       <option value="metal">Metal</option>
     </select>
-    <button onclick="showSuggestions()">Show Suggestions</button>
-    <div id="suggestions" class="grid"></div>
+    <button onclick="showSuggestions()">Show Artists</button>
   </section>
 
   <section id="artists" class="section">
     <h2>🎤 Recommended Artists</h2>
     <div class="grid" id="artistGrid">
-      <!-- Filled dynamically -->
+      <!-- Filled by JavaScript -->
     </div>
   </section>
 
   <section id="playlist" class="section">
     <h2>🔥 Monthly Playlist</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
   </section>
 
   <footer class="footer">
@@ -170,23 +175,36 @@
   </footer>
 
   <script>
-    const artists = [
-      { name: "Dua Lipa", genre: "pop", link: "https://www.dualipa.com/" },
-      { name: "Imagine Dragons", genre: "rock", link: "https://www.imaginedragonsmusic.com/" },
-      { name: "Kendrick Lamar", genre: "rap", link: "https://oklama.com/" },
-      { name: "TesseracT", genre: "metal", link: "https://www.tesseractband.co.uk/" }
-    ];
+    const artists = {
+      pop: [
+        {
+          name: "Dua Lipa",
+          image: "https://i.scdn.co/image/ab6761610000e5ebc9e20c8dc67f31183e230eea",
+          link: "https://www.dualipa.com/"
+        },
+        {
+          name: "The Weeknd",
+          image: "https://i.scdn.co/image/ab6761610000e5eb44d4ed3aa5096f13b3e0f4f1",
+          link: "https://www.theweeknd.com/"
+        }
+      ],
+      rock: [
+        {
+          name: "Imagine Dragons",
+          image: "https://i.scdn.co/image/ab6761610000e5eb67020fdaf7c77f5c2d3f5c1d",
+          link: "https://www.imaginedragonsmusic.com/"
+        },
+        {
+          name: "Muse",
+          image: "https://i.scdn.co/image/ab6761610000e5eb4ef8f4ee4e01347dbdf18df2",
+          link: "https://www.muse.mu/"
+        }
+      ],
+      rap: [
+        {
+          name: "Kendrick Lamar",
+          image: "https://i.scdn.co/image/ab6761610000e5eb75e19ed5d22a4c47d4d2e370",
+          link: "https://oklama.com/"
+        },
+        {
 
-    const playlists = {
-      pop: "Pop Party 2025",
-      rock: "Rock Legends",
-      rap: "Top Rap Picks",
-      metal: "Progressive Metal Essentials"
-    };
-
-    function showSuggestions() {
-      const genre = document.getElementById("genreSelect").value;
-      const container = document.getElementById("suggestions");
-      const artistGrid = document.getElementById("artistGrid");
-      container.innerHTML = "";
-      artis
