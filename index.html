@@ -10,87 +10,68 @@
       font-family: Arial, sans-serif;
       margin: 0;
     }
-
     .navbar {
-      background-color: #111;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
+      background: #111;
+      padding: 1rem;
+      color: white;
     }
-
     .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
     }
-
-    .logo {
-      color: #fff;
-      font-size: 24px;
-    }
-
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 15px;
+      gap: 1rem;
     }
-
-    .nav-links li a {
+    .nav-links a {
       color: white;
       text-decoration: none;
     }
-
     .hero {
-      padding-top: 100px;
       text-align: center;
-      background-color: #222;
+      padding: 3rem 1rem;
+      background: #222;
       color: white;
-      padding-bottom: 50px;
     }
-
     .btn {
-      display: inline-block;
-      background-color: #f04;
+      background: #e91e63;
       color: white;
-      padding: 10px 20px;
-      margin-top: 15px;
+      padding: 0.7rem 1.2rem;
+      border: none;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 4px;
     }
-
     .section {
-      padding: 60px 20px;
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
     }
-
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
     }
-
     .card {
-      background-color: #eee;
-      padding: 15px;
+      background: #f1f1f1;
+      padding: 1rem;
       border-radius: 8px;
       text-align: center;
     }
-
-    .footer {
-      background-color: #111;
+    footer {
+      background: #111;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 1rem;
     }
-
-    section {
-      scroll-margin-top: 80px;
+    footer a {
+      color: #e91e63;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-
   <nav class="navbar">
     <div class="nav-container">
       <h1 class="logo">TUNERA</h1>
@@ -136,20 +117,25 @@
 
   <section id="playlist" class="section">
     <h2>🎧 Playlist del Mese</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
   </section>
 
-  <section id="ricerca" class="section">
-    <h2>🔍 Cerca Artisti per Genere</h2>
-    <input
-      type="text"
-      id="genereInput"
-      placeholder="Scrivi un genere (es: rock, pop, rap...)"
-      style="padding: 10px; width: 80%; margin-bottom: 20px;"
-      onkeyup="filtraArtisti()"
-    />
-    <div id="risultatiArtisti" class="grid">
-      <!-- Risultati dinamici -->
+  <section id="ricerca" class="section" style="background-color: #f7f7f7;">
+    <h2 style="text-align: center; margin-bottom: 10px;">🔍 Cerca Artisti per Genere</h2>
+    <p style="text-align: center; color: #666; margin-bottom: 30px;">Scrivi un genere (es: rock, pop, rap...) per trovare artisti consigliati.</p>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+      <input
+        type="text"
+        id="genereInput"
+        placeholder="Es. pop, metal, rap..."
+        style="padding: 12px 20px; width: 90%; max-width: 500px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px;"
+        onkeyup="filtraArtisti()"
+      />
+    </div>
+
+    <div id="risultatiArtisti" class="grid" style="gap: 25px;">
+      <!-- Risultati qui -->
     </div>
   </section>
 
@@ -211,8 +197,8 @@
         div.className = "card";
         div.innerHTML = `
           <h3>${artista.nome}</h3>
-          <p>Genere: ${artista.genere}</p>
-          <div>
+          <p><strong>Genere:</strong> ${artista.genere}</p>
+          <div style="margin-top: 10px;">
             ${artista.links.spotify ? `<a href="${artista.links.spotify}" target="_blank">🎵 Spotify</a> ` : ""}
             ${artista.links.youtube ? `<a href="${artista.links.youtube}" target="_blank">▶️ YouTube</a> ` : ""}
             ${artista.links.instagram ? `<a href="${artista.links.instagram}" target="_blank">📸 Instagram</a> ` : ""}
@@ -222,12 +208,10 @@
         container.appendChild(div);
       });
 
-      if (filtrati.length === 0) {
-        container.innerHTML = "<p>Nessun artista trovato per questo genere.</p>";
+      if (filtrati.length === 0 && input.trim() !== "") {
+        container.innerHTML = "<p style='text-align: center; color: #999;'>Nessun artista trovato per questo genere.</p>";
       }
     }
   </script>
-
 </body>
 </html>
-
