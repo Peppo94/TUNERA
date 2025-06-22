@@ -1,70 +1,66 @@
 {
   "pop": [
-    {
-      "name": "Dua Lipa",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebc9e20c8dc67f31183e230eea",
-      "link": "https://www.dualipa.com/"
-    },
-    {
-      "name": "The Weeknd",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb44d4ed3aa5096f13b3e0f4f1",
-      "link": "https://www.theweeknd.com/"
-    },
-    {
-      "name": "Ariana Grande",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4d91c0c1831e1d06f0b8d9d2",
-      "link": "https://www.arianagrande.com/"
-    }
+    {"name":"Taylor Swift","image":"https://i.scdn.co/image/ab6761610000e5eb87d38c36f582d4dbefc1d6fa","link":"https://en.wikipedia.org/wiki/Taylor_Swift"},
+    {"name":"Ariana Grande","image":"https://i.scdn.co/image/ab6761610000e5eb2eb168fae5181b12f5b1ff90","link":"https://en.wikipedia.org/wiki/Ariana_Grande"},
+    {"name":"Dua Lipa","image":"https://i.scdn.co/image/ab6761610000e5ebf7e8031c1969e7630e4d01f9","link":"https://en.wikipedia.org/wiki/Dua_Lipa"},
+    {"name":"Ed Sheeran","image":"https://i.scdn.co/image/ab6761610000e5ebb49f1b4c06ecba2d9266d6a7","link":"https://en.wikipedia.org/wiki/Ed_Sheeran"},
+    {"name":"Billie Eilish","image":"https://i.scdn.co/image/ab6761610000e5eb858f1479a7aa1d8b54a7b7cc","link":"https://en.wikipedia.org/wiki/Billie_Eilish"},
+    {"name":"Bruno Mars","image":"https://i.scdn.co/image/ab6761610000e5eb5d5d20c76f7d854e9dbf92e6","link":"https://en.wikipedia.org/wiki/Bruno_Mars"},
+    {"name":"The Weeknd","image":"https://i.scdn.co/image/ab6761610000e5eb35c3debe6a428f8c497c7fbb","link":"https://en.wikipedia.org/wiki/The_Weeknd"},
+    {"name":"Shawn Mendes","image":"https://i.scdn.co/image/ab6761610000e5eb313a9751f2b553497be95f81","link":"https://en.wikipedia.org/wiki/Shawn_Mendes"},
+    {"name":"Selena Gomez","image":"https://i.scdn.co/image/ab6761610000e5eb93f8f01969d08a48b0ac43f7","link":"https://en.wikipedia.org/wiki/Selena_Gomez"},
+    {"name":"Camila Cabello","image":"https://i.scdn.co/image/ab6761610000e5eb39d2b1ff0e6e9f9fa39b2a14","link":"https://en.wikipedia.org/wiki/Camila_Cabello"},
+    {"name":"Katy Perry","image":"https://i.scdn.co/image/ab6761610000e5eb17f3f4a60f8507f6e0325b97","link":"https://en.wikipedia.org/wiki/Katy_Perry"},
+    {"name":"Lady Gaga","image":"https://i.scdn.co/image/ab6761610000e5eb55205aa94041f4473f3a60c7","link":"https://en.wikipedia.org/wiki/Lady_Gaga"},
+    {"name":"Justin Bieber","image":"https://i.scdn.co/image/ab6761610000e5eb4fa360ae49c66e43a27d4902","link":"https://en.wikipedia.org/wiki/Justin_Bieber"},
+    {"name":"Maroon 5","image":"https://i.scdn.co/image/ab6761610000e5eb4d5f8f47dfd76b2db1b110f9","link":"https://en.wikipedia.org/wiki/Maroon_5"},
+    {"name":"Sia","image":"https://i.scdn.co/image/ab6761610000e5ebac3e65ce0805e4e4bf3f8835","link":"https://en.wikipedia.org/wiki/Sia_(musician)"},
+    {"name":"Adele","image":"https://i.scdn.co/image/ab6761610000e5eb91b7265d2a0bb7caaeeac0c7","link":"https://en.wikipedia.org/wiki/Adele"},
+    {"name":"Halsey","image":"https://i.scdn.co/image/ab6761610000e5eb1c2ca65f9c675fcdd4c14b54","link":"https://en.wikipedia.org/wiki/Halsey_(singer)"},
+    {"name":"Miley Cyrus","image":"https://i.scdn.co/image/ab6761610000e5ebc6a17e37a4e5b289df6d03f6","link":"https://en.wikipedia.org/wiki/Miley_Cyrus"},
+    {"name":"Doja Cat","image":"https://i.scdn.co/image/ab6761610000e5eb382e4f7168de222dfbf247fc","link":"https://en.wikipedia.org/wiki/Doja_Cat"},
+    {"name":"Olivia Rodrigo","image":"https://i.scdn.co/image/ab6761610000e5eb95d276137377d8a9a7fa5c37","link":"https://en.wikipedia.org/wiki/Olivia_Rodrigo"},
+    {"name":"Camila Cabello","image":"https://i.scdn.co/image/ab6761610000e5eb39d2b1ff0e6e9f9fa39b2a14","link":"https://en.wikipedia.org/wiki/Camila_Cabello"},
+    {"name":"Demi Lovato","image":"https://i.scdn.co/image/ab6761610000e5eb1a1d5476d27a5c0ab0345c89","link":"https://en.wikipedia.org/wiki/Demi_Lovato"},
+    {"name":"Khalid","image":"https://i.scdn.co/image/ab6761610000e5ebc4a466a0d9bbf4b2e18e2cd9","link":"https://en.wikipedia.org/wiki/Khalid_(singer)"},
+    {"name":"Sam Smith","image":"https://i.scdn.co/image/ab6761610000e5eb3e96457a3b1292135d8082fa","link":"https://en.wikipedia.org/wiki/Sam_Smith_(singer)"},
+    {"name":"Nicki Minaj","image":"https://i.scdn.co/image/ab6761610000e5eb257b2f8b8126f5a2282d93a32","link":"https://en.wikipedia.org/wiki/Nicki_Minaj"},
+    {"name":"Jennifer Lopez","image":"https://i.scdn.co/image/ab6761610000e5eb50326c6d65a6c2157aa3cc98","link":"https://en.wikipedia.org/wiki/Jennifer_Lopez"},
+    {"name":"Shakira","image":"https://i.scdn.co/image/ab6761610000e5eb6b99d5ac8a996c8f5e9f91bb","link":"https://en.wikipedia.org/wiki/Shakira"},
+    {"name":"Selena Gomez","image":"https://i.scdn.co/image/ab6761610000e5eb93f8f01969d08a48b0ac43f7","link":"https://en.wikipedia.org/wiki/Selena_Gomez"},
+    {"name":"Nick Jonas","image":"https://i.scdn.co/image/ab6761610000e5eb0e6f50257a2649936c48ec6e","link":"https://en.wikipedia.org/wiki/Nick_Jonas"},
+    {"name":"Charlie Puth","image":"https://i.scdn.co/image/ab6761610000e5eb2af9dabb0d34445022401d96","link":"https://en.wikipedia.org/wiki/Charlie_Puth"}
   ],
   "rock": [
-    {
-      "name": "Imagine Dragons",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb67020fdaf7c77f5c2d3f5c1d",
-      "link": "https://www.imaginedragonsmusic.com/"
-    },
-    {
-      "name": "Muse",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4ef8f4ee4e01347dbdf18df2",
-      "link": "https://www.muse.mu/"
-    },
-    {
-      "name": "Foo Fighters",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebb2792d71572c6eb6cf1b80d2",
-      "link": "https://www.foofighters.com/"
-    }
+    {"name":"Imagine Dragons","image":"https://i.scdn.co/image/ab6761610000e5ebb5b38b4ebbd99a3d71a2e73b","link":"https://en.wikipedia.org/wiki/Imagine_Dragons"},
+    {"name":"Foo Fighters","image":"https://i.scdn.co/image/ab6761610000e5eb3c7d21597d05e0d4a2149b9e","link":"https://en.wikipedia.org/wiki/Foo_Fighters"},
+    {"name":"Red Hot Chili Peppers","image":"https://i.scdn.co/image/ab6761610000e5eb673c91ec75a83d71f5a34248","link":"https://en.wikipedia.org/wiki/Red_Hot_Chili_Peppers"},
+    {"name":"Muse","image":"https://i.scdn.co/image/ab6761610000e5eb0d3a4a4cc2bc3c9c88690b30","link":"https://en.wikipedia.org/wiki/Muse_(band)"},
+    {"name":"Arctic Monkeys","image":"https://i.scdn.co/image/ab6761610000e5eb4be44ae2c3b4f3ec75f29b90","link":"https://en.wikipedia.org/wiki/Arctic_Monkeys"},
+    {"name":"Green Day","image":"https://i.scdn.co/image/ab6761610000e5eb27b32d70ca2377ad6d60a2a6","link":"https://en.wikipedia.org/wiki/Green_Day"},
+    {"name":"Linkin Park","image":"https://i.scdn.co/image/ab6761610000e5eb73a6dd84e6af0e899c3e1919","link":"https://en.wikipedia.org/wiki/Linkin_Park"},
+    {"name":"The Killers","image":"https://i.scdn.co/image/ab6761610000e5eb52210a8b8d8bf6a7a4c841a6","link":"https://en.wikipedia.org/wiki/The_Killers"},
+    {"name":"Kings of Leon","image":"https://i.scdn.co/image/ab6761610000e5eb46d584aa6809e52a82349110","link":"https://en.wikipedia.org/wiki/Kings_of_Leon"},
+    {"name":"The Strokes","image":"https://i.scdn.co/image/ab6761610000e5eb960b521e866f921d9b76f7f8","link":"https://en.wikipedia.org/wiki/The_Strokes"},
+    {"name":"Nirvana","image":"https://i.scdn.co/image/ab6761610000e5ebd7976e686aa28ed3f0892d3aa","link":"https://en.wikipedia.org/wiki/Nirvana_(band)"},
+    {"name":"Queens of the Stone Age","image":"https://i.scdn.co/image/ab6761610000e5ebba2f9bc4422d7fca8eb7d838","link":"https://en.wikipedia.org/wiki/Queens_of_the_Stone_Age"},
+    {"name":"Pearl Jam","image":"https://i.scdn.co/image/ab6761610000e5eb7f9c49c32dbca52e96265d62","link":"https://en.wikipedia.org/wiki/Pearl_Jam"},
+    {"name":"Radiohead","image":"https://i.scdn.co/image/ab6761610000e5eb0ecf325cb0ca8a4340203df1","link":"https://en.wikipedia.org/wiki/Radiohead"},
+    {"name":"Paramore","image":"https://i.scdn.co/image/ab6761610000e5eb4a7e0f0f728a1bf32bc79dd9","link":"https://en.wikipedia.org/wiki/Paramore"},
+    {"name":"My Chemical Romance","image":"https://i.scdn.co/image/ab6761610000e5eb9dd920b33c2a5b947d7768b6","link":"https://en.wikipedia.org/wiki/My_Chemical_Romance"},
+    {"name":"The White Stripes","image":"https://i.scdn.co/image/ab6761610000e5ebbd551f5b89c3a28d6ae39a883","link":"https://en.wikipedia.org/wiki/The_White_Stripes"},
+    {"name":"Blink-182","image":"https://i.scdn.co/image/ab6761610000e5eb66cfc69ee383e6d9f2f81522b","link":"https://en.wikipedia.org/wiki/Blink-182"},
+    {"name":"Fall Out Boy","image":"https://i.scdn.co/image/ab6761610000e5eb06b47a60753d0ce954bf5f72","link":"https://en.wikipedia.org/wiki/Fall_Out_Boy"},
+    {"name":"The Smashing Pumpkins","image":"https://i.scdn.co/image/ab6761610000e5ebad5c56b092b072d256c11892","link":"https://en.wikipedia.org/wiki/The_Smashing_Pumpkins"},
+    {"name":"The Doors","image":"https://i.scdn.co/image/ab6761610000e5ebc9252f19372f9d416b0cd2dc","link":"https://en.wikipedia.org/wiki/The_Doors"},
+    {"name":"The Beatles","image":"https://i.scdn.co/image/ab6761610000e5eb197f062484fe03498375a4f1","link":"https://en.wikipedia.org/wiki/The_Beatles"},
+    {"name":"The Rolling Stones","image":"https://i.scdn.co/image/ab6761610000e5ebf4b1a51bf4e3d381781e6ed8","link":"https://en.wikipedia.org/wiki/The_Rolling_Stones"},
+    {"name":"The Who","image":"https://i.scdn.co/image/ab6761610000e5ebc8ecb9b5bbfb22d6fceca7d3","link":"https://en.wikipedia.org/wiki/The_Who"},
+    {"name":"Bon Jovi","image":"https://i.scdn.co/image/ab6761610000e5eb22f2b4c8264e920e101a0e0e","link":"https://en.wikipedia.org/wiki/Bon_Jovi"},
+    {"name":"Led Zeppelin","image":"https://i.scdn.co/image/ab6761610000e5eb010ee66149469c3bc1a13b65","link":"https://en.wikipedia.org/wiki/Led_Zeppelin"},
+    {"name":"AC/DC","image":"https://i.scdn.co/image/ab6761610000e5eb740232f9d08a6ffbfcfd8e49","link":"https://en.wikipedia.org/wiki/AC/DC"},
+    {"name":"Queen","image":"https://i.scdn.co/image/ab6761610000e5eb6e78f2e2ceaa6a3edb36cd28","link":"https://en.wikipedia.org/wiki/Queen_(band)"},
+    {"name":"Metallica","image":"https://i.scdn.co/image/ab6761610000e5ebc5a64e8a39a1a9d6e94e63b6b","link":"https://en.wikipedia.org/wiki/Metallica"}
   ],
   "rap": [
-    {
-      "name": "Kendrick Lamar",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb75e19ed5d22a4c47d4d2e370",
-      "link": "https://oklama.com/"
-    },
-    {
-      "name": "Drake",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb5b8f60443c2f497acf0c4af7",
-      "link": "https://www.drakeofficial.com/"
-    },
-    {
-      "name": "Nicki Minaj",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebd560136cbcc0c7ec48fd3b4b",
-      "link": "https://www.mypinkfriday.com/"
-    }
-  ],
-  "metal": [
-    {
-      "name": "Metallica",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebfc1a3746a3c1894ee1c3f987",
-      "link": "https://www.metallica.com/"
-    },
-    {
-      "name": "Iron Maiden",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb6e3c7b35a787f598fa4e46e1",
-      "link": "https://www.ironmaiden.com/"
-    },
-    {
-      "name": "Slipknot",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb1a1d0840f3e6b2a71381ff8a",
-      "link": "https://www.slipknot1.com/"
-    }
-  ]
-}
+    {"name":"Kendrick Lamar","image":"https://i.scdn.co/image/ab6761610000e5eb2eeaee1f152f8b7efcb8acbc","link":"https://en.wikipedi
