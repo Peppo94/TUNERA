@@ -1,119 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TUNERA</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #111;
-      color: #fff;
-    }
-
-    header {
-      background-color: #000;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    header h1 a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 2rem;
-    }
-
-    header h1 a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      padding: 2rem;
-    }
-
-    form {
-      margin-bottom: 2rem;
-    }
-
-    input,
-    button {
-      padding: 0.5rem;
-      margin: 0.5rem 0;
-      display: block;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .card {
-      background: #222;
-      border-radius: 10px;
-      padding: 1rem;
-      margin: 1rem;
-      text-align: center;
-    }
-
-    .card img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    #artistGrid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    #displayName {
-      font-weight: bold;
-      color: limegreen;
-    }
-  </style>
 </head>
-
 <body>
   <header>
-    <h1><a href="#home" id="logo">TUNERA</a></h1>
+    <h1><a href="#home" id="siteTitle">TUNERA</a></h1>
+    <div id="displayName"></div>
+    <button id="logoutBtn">Logout</button>
   </header>
 
-  <section id="home">
-    <h2>Welcome to TUNERA</h2>
-    <p id="displayName"></p>
+  <main>
+    <section id="register">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <input type="email" id="registerEmail" placeholder="Email" required />
+        <input type="password" id="registerPassword" placeholder="Password" required />
+        <input type="text" id="nickname" placeholder="Nickname" required />
+        <button type="submit">Register</button>
+      </form>
+    </section>
 
-    <select id="genreSelect">
-      <option value="">Select Genre</option>
-      <option value="rock">Rock</option>
-      <option value="pop">Pop</option>
-      <option value="hiphop">Hip-Hop</option>
-    </select>
-    <button onclick="showSuggestions()">Show Artists</button>
-    <div id="artistGrid"></div>
-    <button id="logoutBtn">Logout</button>
-  </section>
+    <section id="login">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <button type="button" id="resetPasswordBtn">Forgot Password?</button>
+      </form>
+    </section>
 
-  <section id="register">
-    <h2>Register</h2>
-    <form id="registerForm">
-      <input type="email" id="registerEmail" placeholder="Email" required />
-      <input type="password" id="registerPassword" placeholder="Password" required />
-      <input type="text" id="nickname" placeholder="Nickname" required />
-      <button type="submit">Register</button>
-    </form>
-  </section>
-
-  <section id="login">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="Email" required />
-      <input type="password" id="loginPassword" placeholder="Password" required />
-      <button type="submit">Login</button>
-      <button type="button" id="resetPasswordBtn">Forgot Password?</button>
-    </form>
-  </section>
+    <section id="home">
+      <h2>Select Genre</h2>
+      <select id="genreSelect" onchange="showSuggestions()">
+        <option value="">--Select a genre--</option>
+        <option value="rock">Rock</option>
+        <option value="pop">Pop</option>
+        <option value="rap">Rap</option>
+      </select>
+      <div id="artistGrid"></div>
+    </section>
+  </main>
 
   <script type="module" src="app.js"></script>
 </body>
-
 </html>
