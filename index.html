@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-container">
       <h1 class="logo">TUNERA</h1>
@@ -16,16 +17,19 @@
         <li><a href="#artisti">Artisti</a></li>
         <li><a href="#nuove">Uscite</a></li>
         <li><a href="#playlist">Playlist</a></li>
+        <li><a href="#musica">🎶 Legion</a></li>
       </ul>
     </div>
   </nav>
 
+  <!-- HERO -->
   <header id="home" class="hero">
     <h1>TUNERA</h1>
     <p>Scopri musica nuova ogni giorno.</p>
     <a href="#artisti" class="btn">Scopri Ora</a>
   </header>
 
+  <!-- ARTISTI -->
   <section id="artisti" class="section">
     <h2>🎤 Artisti Consigliati</h2>
     <div class="grid">
@@ -42,6 +46,7 @@
     </div>
   </section>
 
+  <!-- NUOVE USCITE -->
   <section id="nuove" class="section">
     <h2>🔥 Nuove Uscite</h2>
     <ul>
@@ -50,14 +55,47 @@
     </ul>
   </section>
 
+  <!-- PLAYLIST -->
   <section id="playlist" class="section">
     <h2>🎧 Playlist del Mese</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
+      width="100%" height="152" frameborder="0" allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <p>Contattaci su <a href="#">Instagram</a> – &copy; 2025 Tunera</p>
   </footer>
 
+  <!-- SEZIONE MUSICA -->
+  <section class="section" id="musica">
+    <h2>🎶 Ascolta “Legion” – TesseracT</h2>
+    <button onclick="playLegion()" style="padding: 10px 20px; background-color: #ff3c78; border: none; color: white; border-radius: 30px; cursor: pointer;">
+      ▶️ Avvia Musica
+    </button>
+    <iframe
+      id="yt-player"
+      width="0"
+      height="0"
+      style="display: none;"
+      allow="autoplay">
+    </iframe>
+    <p style="margin-top: 1rem; color: #ccc;">
+      Clicca il pulsante per ascoltare il brano da YouTube.
+    </p>
+  </section>
+
+  <!-- SCRIPT PER LA MUSICA -->
+  <script>
+    function playLegion() {
+      const iframe = document.getElementById('yt-player');
+      iframe.src = "https://www.youtube.com/embed/pHZXTmPnMso?autoplay=1&loop=1&playlist=pHZXTmPnMso";
+    }
+  </script>
+
 </body>
 </html>
+   
