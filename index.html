@@ -5,13 +5,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TUNERA</title>
   <link rel="stylesheet" href="style.css" />
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
 
+    body {
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px 30px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    header h1 a {
+      text-decoration: none;
+      color: #00ffc3;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+    }
+
+    #displayName {
+      font-size: 1.2rem;
+      margin-right: 20px;
+    }
+
+    button {
+      background-color: #00ffc3;
+      border: none;
+      padding: 10px 20px;
+      color: #000;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00bfa6;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    section {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, select {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    #artistGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: #ffffff10;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #ffffff20;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      color: #00ffc3;
+      margin-bottom: 5px;
+    }
+
+    .card a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+      main {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      #home {
+        grid-column: span 2;
+      }
+    }
+  </style>
+</head>
 <body>
   <header>
     <h1><a href="#home" id="siteTitle">TUNERA</a></h1>
-    <div id="displayName"></div>
-    <button id="logoutBtn">Logout</button>
+    <div>
+      <span id="displayName"></span>
+      <button id="logoutBtn">Logout</button>
+    </div>
   </header>
 
   <main>
@@ -47,7 +171,6 @@
     </section>
   </main>
 
-  <!-- ✅ SOLO QUI deve stare -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
