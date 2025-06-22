@@ -4,124 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TUNERA</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #1f1f1f;
-      padding: 20px;
-      text-align: center;
-    }
-    section {
-      padding: 20px;
-    }
-    input, button {
-      padding: 10px;
-      margin: 5px;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="app.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>Welcome to TUNERA</h1>
-    <div id="user-greeting"></div>
+    <h1>TUNERA</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#register">Register</a>
+      <a href="#login">Login</a>
+      <a href="#explore">Explore Artists</a>
+    </nav>
+    <div id="userInfo"></div>
   </header>
 
-  <section id="register-section">
-    <h2>Register</h2>
-    <form id="register-form">
-      <input type="text" id="reg-nickname" placeholder="Nickname" required />
-      <input type="email" id="reg-email" placeholder="Email" required />
-      <input type="password" id="reg-password" placeholder="Password" required />
-      <button type="submit">Register</button>
-    </form>
-  </section>
+  <main>
+    <section id="home">
+      <h2>Welcome to Tunera</h2>
+      <p>Discover artists by genre. Sign up and personalize your experience.</p>
+    </section>
 
-  <section id="login-section">
-    <h2>Login</h2>
-    <form id="login-form">
-      <input type="email" id="login-email" placeholder="Email" required />
-      <input type="password" id="login-password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
-    <p><a href="#" id="reset-password">Forgot password?</a></p>
-  </section>
+    <section id="register">
+      <h2>Register</h2>
+      <input type="email" id="registerEmail" placeholder="Email" />
+      <input type="password" id="registerPassword" placeholder="Password" />
+      <input type="text" id="nickname" placeholder="Choose a Nickname" />
+      <button onclick="register()">Register</button>
+    </section>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    <section id="login">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email" />
+      <input type="password" id="loginPassword" placeholder="Password" />
+      <button onclick="login()">Login</button>
+      <p><a href="#" onclick="resetPassword()">Forgot your password?</a></p>
+    </section>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyA9jd74SINKKmkHhmvQfTx0nKiL7NTUF8w",
-      authDomain: "tunera-b3efa.firebaseapp.com",
-      projectId: "tunera-b3efa",
-      storageBucket: "tunera-b3efa.appspot.com",
-      messagingSenderId: "4289124219",
-      appId: "1:4289124219:web:507e539fe707e35b814fde"
-    };
+    <section id="explore">
+      <h2>Explore Artists</h2>
+      <select id="genreSelect" onchange="showSuggestions()">
+        <option value="">Select a genre</option>
+        <option value="rock">Rock</option>
+        <option value="pop">Pop</option>
+        <option value="hiphop">Hip-Hop</option>
+        <option value="jazz">Jazz</option>
+        <!-- Add more genres as needed -->
+      </select>
+      <div id="artistGrid" class="grid"></div>
+    </section>
+  </main>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    const nicknameDisplay = document.getElementById("user-greeting");
-    const savedNickname = localStorage.getItem("nickname");
-    if (savedNickname) {
-      nicknameDisplay.innerText = `Welcome, ${savedNickname}!`;
-    }
-
-    document.getElementById("register-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("reg-email").value;
-      const password = document.getElementById("reg-password").value;
-      const nickname = document.getElementById("reg-nickname").value;
-
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          localStorage.setItem("nickname", nickname);
-          nicknameDisplay.innerText = `Welcome, ${nickname}!`;
-          alert("Registration successful!");
-        })
-        .catch((error) => {
-          alert("Error: " + error.message);
-        });
-    });
-
-    document.getElementById("login-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
-
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          const nickname = localStorage.getItem("nickname") || "User";
-          nicknameDisplay.innerText = `Welcome, ${nickname}!`;
-          alert("Login successful!");
-        })
-        .catch((error) => {
-          alert("Login failed: " + error.message);
-        });
-    });
-
-    document.getElementById("reset-password").addEventListener("click", () => {
-      const email = prompt("Enter your email to reset password:");
-      if (email) {
-        sendPasswordResetEmail(auth, email)
-          .then(() => {
-            alert("Password reset email sent.");
-          })
-          .catch((error) => {
-            alert("Error: " + error.message);
-          });
-      }
-    });
-  </script>
+  <footer>
+    <p>&copy; 2025 Tunera. All rights reserved.</p>
+  </footer>
 </body>
 </html>
