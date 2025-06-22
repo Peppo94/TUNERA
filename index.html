@@ -207,4 +207,49 @@
           link: "https://oklama.com/"
         },
         {
+          name: "J. Cole",
+          image: "https://i.scdn.co/image/ab6761610000e5ebcf7baaa8ef6d4b79530d45ad",
+          link: "https://www.dreamville.com/"
+        }
+      ],
+      metal: [
+        {
+          name: "Metallica",
+          image: "https://i.scdn.co/image/ab6761610000e5ebdfbfa1a46cbfbc77dbf1b2c5",
+          link: "https://www.metallica.com/"
+        },
+        {
+          name: "TesseracT",
+          image: "https://i.scdn.co/image/ab6761610000e5ebceea6b969f7b5a2bc05a17c3",
+          link: "https://www.tesseractband.co.uk/"
+        }
+      ]
+    };
 
+    function showSuggestions() {
+      const genre = document.getElementById("genreSelect").value;
+      const container = document.getElementById("artistGrid");
+      container.innerHTML = "";
+
+      if (!genre || !artists[genre]) {
+        container.innerHTML = "<p>Please select a valid genre.</p>";
+        return;
+      }
+
+      artists[genre].forEach(artist => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+          <img src="${artist.image}" alt="${artist.name}" />
+          <h3>${artist.name}</h3>
+          <a href="${artist.link}" target="_blank">Official Page</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+  
