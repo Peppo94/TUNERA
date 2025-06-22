@@ -5,198 +5,226 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TUNERA – Discover New Music</title>
 <style>
-  /* RESET */
+  /* Reset base */
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
+
   body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff0f5;
+    color: #222;
+    line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
-  a {
-    color: #ff416c;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  a:hover {
-    color: #ff4b2b;
-  }
 
-  /* NAVBAR */
-  .navbar {
-    background: #111;
-    padding: 1rem 3rem;
+  nav.navbar {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 99;
-    box-shadow: 0 2px 10px rgba(255, 65, 108, 0.3);
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(255,75,44,0.4);
   }
-  .navbar h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
+
+  nav.navbar h1 {
+    font-weight: 700;
     font-size: 1.8rem;
-    letter-spacing: 3px;
-    color: #ff416c;
-    cursor: default;
-    user-select: none;
+    letter-spacing: 2px;
   }
-  .nav-links {
+
+  nav.navbar ul.nav-links {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
   }
-  .nav-links a {
+
+  nav.navbar ul.nav-links li a {
+    color: white;
+    text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    padding: 0.3rem 0;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    display: block;
-    width: 0%;
-    height: 2px;
-    background: #ff416c;
-    transition: width 0.3s;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-  .nav-links a:hover::after {
-    width: 100%;
+    transition: color 0.3s ease;
   }
 
-  /* HERO */
-  .hero {
-    flex: 1;
-    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
-    color: white;
-    text-align: center;
-    padding: 6rem 2rem 4rem 2rem;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-    box-shadow: 0 10px 20px rgba(255, 75, 43, 0.5);
-  }
-  .hero h1 {
-    font-size: 3.5rem;
-    font-weight: 900;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-    margin-bottom: 1rem;
-  }
-  .hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    letter-spacing: 0.05em;
-  }
-  .btn {
-    background: #eee;
-    color: #ff416c;
-    font-weight: 700;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1rem;
-    box-shadow: 0 8px 15px rgba(255, 65, 108, 0.4);
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-  }
-  .btn:hover {
-    background: #ff416c;
-    color: white;
-    box-shadow: 0 15px 20px rgba(255, 65, 108, 0.7);
-    transform: translateY(-3px);
+  nav.navbar ul.nav-links li a:hover {
+    color: #fff7f9;
+    text-shadow: 0 0 5px #fff7f9;
   }
 
-  /* SECTION STYLING */
-  .section {
-    max-width: 1000px;
-    margin: 3rem auto 4rem auto;
-    padding: 0 2rem;
-  }
-  .section h2 {
+  header.hero {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 5rem 2rem;
     text-align: center;
-    font-size: 2.2rem;
+    box-shadow: inset 0 0 50px #ff416c;
+  }
+
+  header.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
     font-weight: 800;
-    margin-bottom: 1rem;
-    color: #ff4b2b;
-    letter-spacing: 0.05em;
-    text-shadow: 0 0 6px rgba(255,75,43,0.7);
+    letter-spacing: 2px;
   }
 
-  /* GENRE SELECT & BUTTON */
-  #genreSelect {
-    width: 100%;
-    max-width: 320px;
-    display: block;
-    margin: 0.5rem auto 1rem auto;
-    padding: 0.8rem 1.2rem;
-    font-size: 1rem;
+  header.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  header.hero a.btn {
+    background: white;
+    color: #ff416c;
+    padding: 0.7rem 2rem;
     border-radius: 30px;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 10px #ff416c88;
-    background: #222;
-    color: #eee;
-    transition: box-shadow 0.3s ease;
-  }
-  #genreSelect:focus {
-    box-shadow: 0 0 18px #ff4b2bcc;
-  }
-  button {
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(255,65,108,0.5);
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
-  /* ARTISTS GRID */
+  header.hero a.btn:hover {
+    background: #ff4b2b;
+    color: white;
+    box-shadow: 0 6px 15px rgba(255,75,44,0.7);
+  }
+
+  section.section {
+    max-width: 960px;
+    margin: 2rem auto 3rem auto;
+    padding: 0 1rem;
+  }
+
+  section.section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ff416c;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 0 3px #ff4b2b;
+  }
+
+  #preferences select,
+  #preferences button,
+  form input[type="email"],
+  form input[type="password"],
+  form input[type="text"],
+  form button {
+    display: block;
+    width: 250px;
+    max-width: 90vw;
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+    border-radius: 25px;
+    border: 2px solid #ff416c;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  #preferences select:focus,
+  #preferences button:hover,
+  form button:hover,
+  form input[type="email"]:focus,
+  form input[type="password"]:focus,
+  form input[type="text"]:focus {
+    background: #ff416c;
+    color: white;
+    border-color: #ff4b2b;
+    outline: none;
+  }
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 1.6rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
   }
+
   .card {
-    background: #222;
-    border-radius: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(255, 75, 44, 0.15);
     padding: 1rem;
-    box-shadow: 0 4px 10px #ff416c88;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
   }
+
   .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px #ff4b2bcc;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 75, 44, 0.3);
   }
+
   .card img {
-    border-radius: 12px;
     width: 100%;
-    height: 150px;
+    max-height: 150px;
+    border-radius: 10px;
     object-fit: cover;
-    margin-bottom: 0.7rem;
-    filter: drop-shadow(0 0 3px #ff416ccc);
+    margin-bottom: 0.8rem;
+    box-shadow: 0 2px 6px rgba(255, 65, 108, 0.3);
   }
+
   .card h3 {
-    color: #ff4b2b;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
-  }
-  .card a {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #eee;
-  }
-  .card a:hover {
     color: #ff416c;
   }
 
-  /* AUTH SECTION */
+  .card a {
+    color: #ff4b2b;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .card a:hover {
+    text-decoration: underline;
+  }
+
+  #regMessage,
+  #loginMessage {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  #regMessage.success,
+  #loginMessage.success {
+    color: green;
+  }
+
+  #regMessage.error,
+  #loginMessage.error {
+    color: red;
+  }
+
+  #loggedInUser {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 700;
+    color: #ff416c;
+  }
+
+  /* Footer */
+  footer.footer {
+    background: #ff416c;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: auto;
+    box-sha
