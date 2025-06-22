@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TUNERA – Discover New Music</title>
   <style>
     body {
@@ -154,6 +154,8 @@
       <option value="rock">Rock</option>
       <option value="rap">Rap</option>
       <option value="metal">Metal</option>
+      <option value="indie">Indie</option>
+      <option value="electronic">Electronic</option>
     </select>
     <button onclick="showSuggestions()">Show Artists</button>
   </section>
@@ -161,7 +163,7 @@
   <section id="artists" class="section">
     <h2>🎤 Recommended Artists</h2>
     <div class="grid" id="artistGrid">
-      <!-- JavaScript will fill this -->
+      <!-- Artists will be loaded here -->
     </div>
   </section>
 
@@ -191,7 +193,12 @@
         return;
       }
 
-      artists[genre].forEach(artist => {
+      // Remove duplicate artist names
+      const uniqueArtists = Array.from(
+        new Set(artists[genre].map(a => a.name))
+      ).map(name => artists[genre].find(a => a.name === name));
+
+      uniqueArtists.forEach(artist => {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
