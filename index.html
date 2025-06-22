@@ -2,78 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TUNERA – Discover New Music</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #333;
     }
 
     .navbar {
+      position: sticky;
+      top: 0;
       background: #111;
-      padding: 1rem 2rem;
       color: white;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 10;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .nav-links a {
       color: white;
       text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #e91e63;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: white;
+      color: #ff4b2b;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffe9e4;
     }
 
     .section {
-      padding: 2rem;
+      padding: 3rem 2rem;
       max-width: 1000px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
 
     .card {
       background: white;
       padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
 
     .card img {
-      width: 100%;
+      max-width: 100%;
       border-radius: 8px;
+      margin-bottom: 0.5rem;
     }
 
-    .btn {
-      padding: 0.5rem 1rem;
-      background: #e91e63;
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: #222;
       color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      margin-top: 2rem;
     }
 
-    input, select {
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      width: 100%;
-      max-width: 400px;
-      display: block;
-      margin-bottom: 1rem;
+    select, button, input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    a {
+      color: #e91e63;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -85,17 +136,19 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#preferences">Genres</a></li>
       <li><a href="#artists">Artists</a></li>
+      <li><a href="#playlist">Playlist</a></li>
       <li><a href="#register">Register</a></li>
     </ul>
   </nav>
 
-  <section id="home" class="section">
-    <h2>Welcome to TUNERA</h2>
-    <p>Discover music based on your taste!</p>
-  </section>
+  <header id="home" class="hero">
+    <h1>Welcome to TUNERA</h1>
+    <p>Discover new music tailored to your taste</p>
+    <a href="#preferences" class="btn">Start Exploring</a>
+  </header>
 
   <section id="preferences" class="section">
-    <h2>Choose Your Favorite Genre</h2>
+    <h2>🎧 Choose Your Favorite Genre</h2>
     <select id="genreSelect">
       <option value="">-- Select a genre --</option>
       <option value="pop">Pop</option>
@@ -103,16 +156,80 @@
       <option value="rap">Rap</option>
       <option value="metal">Metal</option>
     </select>
-    <button class="btn" onclick="showSuggestions()">Show Artists</button>
+    <button onclick="showSuggestions()">Show Artists</button>
   </section>
 
   <section id="artists" class="section">
-    <h2>Recommended Artists</h2>
+    <h2>🎤 Recommended Artists</h2>
     <div class="grid" id="artistGrid">
-      <!-- Filled by JS -->
+      <!-- Filled by JavaScript -->
     </div>
   </section>
 
-  <section id="register" class="section">
-    <h2>Sign Up</h2>
-    <input type="email" id="email" placeholder="Email" />
+  <section id="playlist" class="section">
+    <h2>🔥 Monthly Playlist</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
+
+  <!-- ✅ Modern Register Section -->
+  <section id="register" class="section" style="background:#fff; max-width:500px; margin:2rem auto; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); padding:2rem;">
+    <h2 style="text-align:center; color:#333;">🔐 Sign Up or Log In</h2>
+    <form id="authForm" style="display:flex; flex-direction:column; gap:1rem;">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="text" id="nickname" placeholder="Choose a nickname" required>
+      <button type="submit" style="background:#e91e63; color:#fff;">Register / Log In</button>
+    </form>
+    <p id="authMessage" style="margin-top:1rem; text-align:center; color:#e91e63;"></p>
+  </section>
+
+  <footer class="footer">
+    <p>Contact us on <a href="#">Instagram</a> — &copy; 2025 TUNERA</p>
+  </footer>
+
+  <script>
+    async function loadArtists() {
+      const res = await fetch('artists.json');
+      return res.json();
+    }
+
+    async function showSuggestions() {
+      const artists = await loadArtists();
+      const genre = document.getElementById("genreSelect").value;
+      const container = document.getElementById("artistGrid");
+      container.innerHTML = "";
+
+      if (!genre || !artists[genre] || artists[genre].length === 0) {
+        container.innerHTML = "<p>Please select a valid genre.</p>";
+        return;
+      }
+
+      artists[genre].forEach(artist => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${artist.image}" alt="${artist.name}" />
+          <h3>${artist.name}</h3>
+          <a href="${artist.link}" target="_blank">Official Page</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById("authForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const nickname = document.getElementById("nickname").value;
+
+      if (email && password && nickname) {
+        document.getElementById("authMessage").textContent = `Welcome, ${nickname}! You're now registered.`;
+        document.getElementById("authForm").reset();
+      } else {
+        document.getElementById("authMessage").textContent = "Please fill all fields.";
+      }
+    });
+  </script>
+
+</body>
+</html>
